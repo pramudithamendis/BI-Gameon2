@@ -1,0 +1,75 @@
+{
+  "metrics": {
+    "total_users_daily": {
+      "enabled": true,
+      "initialized": true,
+      "initial_load_date": "2025-11-01",
+      "description": "Total user count (daily)",
+      "files": {
+        "initial": [
+          "01_total_users_daily.sql"
+        ],
+        "incremental": [
+          "01_total_users_daily.sql"
+        ]
+      }
+    },
+    "total_users_weekly": {
+      "enabled": true,
+      "initialized": true,
+      "initial_load_date": "2025-11-01",
+      "description": "Total user count (weekly)",
+      "files": {
+        "initial": [
+          "02_total_users_weekly.sql"
+        ],
+        "incremental": [
+          "02_total_users_weekly.sql"
+        ]
+      }
+    },
+    "total_users_monthly": {
+      "enabled": true,
+      "initialized": true,
+      "initial_load_date": "2025-11-01",
+      "description": "Total user count (monthly)",
+      "files": {
+        "initial": [
+          "03_total_users_monthly.sql"
+        ],
+        "incremental": [
+          "03_total_users_monthly.sql"
+        ]
+      }
+    },
+    "total_users": {
+      "enabled": true,
+      "initialized": true,
+      "initial_load_date": "2025-11-01",
+      "description": "Total user count (cumulative)",
+      "files": {
+        "initial": [
+          "04_total_users_cumulative.sql"
+        ],
+        "incremental": [
+          "04_total_users_cumulative.sql"
+        ]
+      }
+    },
+    "total_deposits_daily": {
+      "enabled": true,
+      "initialized": true,
+      "initial_load_date": "2025-11-11",
+      "description": "Total deposits (daily)",
+      "files": {
+        "initial": [
+          "05_total_deposits_daily.sql"
+        ],
+        "incremental": [
+          "05_total_deposits_daily.sql"
+        ]
+      }
+    }
+  },
+  "last_updated": "2025-11-11T10:39:11.892783"
+}

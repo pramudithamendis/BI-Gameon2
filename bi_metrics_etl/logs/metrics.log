@@ -1,0 +1,835 @@
+2025-10-20 11:19:25,477 - src.metric_runner - INFO - Mode: INITIAL | Discovered 10 metrics to run
+2025-10-20 11:19:25,477 - src.metric_runner - INFO - Metrics: top_users_by_coins, total_available_coins, webx_completed_txn_last_60d, webx_completed_txn_summary, user_withdrawals_approved_snapshot, user_withdrawals_approved_summary, total_game_sessions_summary, platform_commission_summary, ai_match_player_stats_snapshot, user_balance_snapshot
+2025-10-20 11:19:25,477 - __main__ - INFO - Running initial metrics for today: 2025-10-20
+2025-10-20 11:19:25,479 - __main__ - ERROR - Fatal error: (1045, "Access denied for user 'ubuntu'@'localhost' (using password: NO)")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/run_metrics.py", line 67, in main
+    results = runner.run_all_metrics(today)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 130, in run_all_metrics
+    with self.db.transaction():
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 34, in transaction
+    conn = self.connect()
+           ^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 18, in connect
+    self._connection = pymysql.connect(
+                       ^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 365, in __init__
+    self.connect()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 681, in connect
+    self._request_authentication()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 972, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1063, in _process_auth
+    pkt = self._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'ubuntu'@'localhost' (using password: NO)")
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: top_users_by_coins (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: total_available_coins (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: webx_completed_txn_last_60d (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: webx_completed_txn_summary (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: user_withdrawals_approved_snapshot (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: user_withdrawals_approved_summary (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: total_game_sessions_summary (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: platform_commission_summary (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: ai_match_player_stats_snapshot (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - WARNING - Skipping uninitialized metric: user_balance_snapshot (run --initial first)
+2025-10-20 11:33:56,258 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 3 metrics to run
+2025-10-20 11:33:56,258 - src.metric_runner - INFO - Metrics: total_users, new_users_last_60d, top_100_games_played
+2025-10-20 11:33:56,259 - __main__ - INFO - Running incremental metrics for today: 2025-10-20
+2025-10-20 11:33:56,261 - src.db_manager - INFO - Database connection established
+2025-10-20 11:33:56,261 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-10-20
+2025-10-20 11:33:56,263 - src.metric_runner - INFO -   01_total_users_incremental.sql: 1 row(s) affected
+2025-10-20 11:33:56,263 - src.metric_runner - INFO - total_users: Total 1 row(s) affected for 2025-10-20
+2025-10-20 11:33:56,263 - src.metric_runner - INFO -   02_new_users_last_60d_incremental.sql: 0 row(s) affected
+2025-10-20 11:33:56,264 - src.metric_runner - INFO - new_users_last_60d: Total 0 row(s) affected for 2025-10-20
+2025-10-20 11:33:56,305 - src.metric_runner - INFO -   03a_update_user_games_summary.sql: 17 row(s) affected
+2025-10-20 11:33:56,306 - src.metric_runner - INFO -   03b_top_100_games_played_incremental.sql: 1 row(s) affected
+2025-10-20 11:33:56,308 - src.metric_runner - INFO - top_100_games_played: Total 18 row(s) affected for 2025-10-20
+2025-10-20 11:33:56,308 - src.metric_runner - INFO - Successfully completed all metrics for 2025-10-20
+2025-10-20 11:33:56,314 - src.db_manager - INFO - Database connection closed
+2025-10-20 11:36:27,095 - src.metric_runner - INFO - Mode: INITIAL | Discovered 10 metrics to run
+2025-10-20 11:36:27,096 - src.metric_runner - INFO - Metrics: top_users_by_coins, total_available_coins, webx_completed_txn_last_60d, webx_completed_txn_summary, user_withdrawals_approved_snapshot, user_withdrawals_approved_summary, total_game_sessions_summary, platform_commission_summary, ai_match_player_stats_snapshot, user_balance_snapshot
+2025-10-20 11:36:27,096 - __main__ - INFO - Running initial metrics for today: 2025-10-20
+2025-10-20 11:36:27,098 - src.db_manager - INFO - Database connection established
+2025-10-20 11:36:27,098 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-10-20
+2025-10-20 11:36:27,098 - src.metric_runner - ERROR - Failed to run top_users_by_coins for 2025-10-20: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff      := '2025-09-27 00:00:00';\n\n-- Metric: bi_user_coin_balance_init' at line 3")
+2025-10-20 11:36:27,098 - src.metric_runner - ERROR - (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff      := '2025-09-27 00:00:00';\n\n-- Metric: bi_user_coin_balance_init' at line 3")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff      := '2025-09-27 00:00:00';\n\n-- Metric: bi_user_coin_balance_init' at line 3")
+2025-10-20 11:36:27,102 - src.metric_runner - ERROR - Failed to run total_available_coins for 2025-10-20: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 4")
+2025-10-20 11:36:27,102 - src.metric_runner - ERROR - (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 4")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 4")
+2025-10-20 11:36:27,103 - src.metric_runner - ERROR - Failed to run webx_completed_txn_last_60d for 2025-10-20: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff := '2025-08-21 00:00:00';\n\n-- Metric: webx_completed_txn_last_60d (I' at line 3")
+2025-10-20 11:36:27,103 - src.metric_runner - ERROR - (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff := '2025-08-21 00:00:00';\n\n-- Metric: webx_completed_txn_last_60d (I' at line 3")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff := '2025-08-21 00:00:00';\n\n-- Metric: webx_completed_txn_last_60d (I' at line 3")
+2025-10-20 11:36:27,104 - src.metric_runner - ERROR - Failed to run webx_completed_txn_summary for 2025-10-20: SQL file not found: sql/initial/09_total_deposits_whole.sql
+2025-10-20 11:36:27,104 - src.metric_runner - ERROR - SQL file not found: sql/initial/09_total_deposits_whole.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/initial/09_total_deposits_whole.sql
+2025-10-20 11:36:27,104 - src.metric_runner - ERROR - Failed to run user_withdrawals_approved_snapshot for 2025-10-20: unsupported format character '@' (0x40) at index 1195
+2025-10-20 11:36:27,104 - src.metric_runner - ERROR - unsupported format character '@' (0x40) at index 1195
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 151, in execute
+    query = self.mogrify(query, args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 129, in mogrify
+    query = query % self._escape_args(args, conn)
+            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ValueError: unsupported format character '@' (0x40) at index 1195
+2025-10-20 11:36:27,105 - src.metric_runner - ERROR - Failed to run user_withdrawals_approved_summary for 2025-10-20: unsupported format character '@' (0x40) at index 969
+2025-10-20 11:36:27,105 - src.metric_runner - ERROR - unsupported format character '@' (0x40) at index 969
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 151, in execute
+    query = self.mogrify(query, args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 129, in mogrify
+    query = query % self._escape_args(args, conn)
+            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ValueError: unsupported format character '@' (0x40) at index 969
+2025-10-20 11:36:27,105 - src.metric_runner - ERROR - Failed to run total_game_sessions_summary for 2025-10-20: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 9")
+2025-10-20 11:36:27,105 - src.metric_runner - ERROR - (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 9")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 9")
+2025-10-20 11:36:27,106 - src.metric_runner - ERROR - Failed to run platform_commission_summary for 2025-10-20: %d format: a real number is required, not dict
+2025-10-20 11:36:27,106 - src.metric_runner - ERROR - %d format: a real number is required, not dict
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 151, in execute
+    query = self.mogrify(query, args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 129, in mogrify
+    query = query % self._escape_args(args, conn)
+            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: %d format: a real number is required, not dict
+2025-10-20 11:36:27,106 - src.metric_runner - ERROR - Failed to run ai_match_player_stats_snapshot for 2025-10-20: SQL file not found: sql/initial/14_0.2_AI_matches_data.sql
+2025-10-20 11:36:27,106 - src.metric_runner - ERROR - SQL file not found: sql/initial/14_0.2_AI_matches_data.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/initial/14_0.2_AI_matches_data.sql
+2025-10-20 11:36:27,107 - src.metric_runner - ERROR - Failed to run user_balance_snapshot for 2025-10-20: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 9")
+2025-10-20 11:36:27,107 - src.metric_runner - ERROR - (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 9")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO bi_metrics (metrics, data_type, f_list, value_list, metric_date, cre' at line 9")
+2025-10-20 11:36:27,107 - src.metric_runner - WARNING - Some metrics failed for 2025-10-20: ['top_users_by_coins', 'total_available_coins', 'webx_completed_txn_last_60d', 'webx_completed_txn_summary', 'user_withdrawals_approved_snapshot', 'user_withdrawals_approved_summary', 'total_game_sessions_summary', 'platform_commission_summary', 'ai_match_player_stats_snapshot', 'user_balance_snapshot']
+2025-10-20 11:36:27,108 - src.db_manager - INFO - Database connection closed
+2025-10-20 11:40:31,039 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-10-20 11:40:31,039 - src.metric_runner - INFO - Metrics: new_users_last_60d
+2025-10-20 11:40:31,039 - __main__ - INFO - Running initial metrics for today: 2025-10-20
+2025-10-20 11:40:31,041 - src.db_manager - INFO - Database connection established
+2025-10-20 11:40:31,042 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-10-20
+2025-10-20 11:40:31,042 - src.metric_runner - ERROR - Failed to run new_users_last_60d for 2025-10-20: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff := '2025-08-20 00:00:00';\n\n-- Metric: new_users_last_60d (INITIAL LO' at line 3")
+2025-10-20 11:40:31,042 - src.metric_runner - ERROR - (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff := '2025-08-20 00:00:00';\n\n-- Metric: new_users_last_60d (INITIAL LO' at line 3")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @cutoff := '2025-08-20 00:00:00';\n\n-- Metric: new_users_last_60d (INITIAL LO' at line 3")
+2025-10-20 11:40:31,045 - src.metric_runner - WARNING - Some metrics failed for 2025-10-20: ['new_users_last_60d']
+2025-10-20 11:40:31,045 - src.db_manager - INFO - Database connection closed
+2025-10-20 11:49:12,101 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-10-20 11:49:12,101 - src.metric_runner - INFO - Metrics: new_users_last_60d
+2025-10-20 11:49:12,101 - __main__ - INFO - Running initial metrics for today: 2025-10-20
+2025-10-20 11:49:12,104 - src.db_manager - INFO - Database connection established
+2025-10-20 11:49:12,104 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-10-20
+2025-10-20 11:49:12,106 - src.metric_runner - INFO -   02_new_users_last_60d_initial.sql: 1 row(s) affected
+2025-10-20 11:49:12,106 - src.metric_runner - INFO - new_users_last_60d: Total 1 row(s) affected for 2025-10-20
+2025-10-20 11:49:12,106 - src.metric_runner - INFO - Marked new_users_last_60d as initialized (date: 2025-10-20)
+2025-10-20 11:49:12,107 - src.metric_runner - INFO - Configuration saved to config/metrics_registry.json
+2025-10-20 11:49:12,107 - src.metric_runner - INFO - Successfully completed all metrics for 2025-10-20
+2025-10-20 11:49:12,113 - src.db_manager - INFO - Database connection closed
+2025-10-20 11:54:06,988 - src.metric_runner - INFO - Mode: INITIAL | Discovered 0 metrics to run
+2025-10-20 11:54:06,988 - __main__ - INFO - Running initial metrics for today: 2025-10-20
+2025-10-20 11:54:06,988 - src.metric_runner - ERROR - No metrics configured to run in initial mode
+2025-10-20 11:55:20,351 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-10-20 11:55:20,351 - src.metric_runner - INFO - Metrics: new_users_last_60d
+2025-10-20 11:55:20,351 - __main__ - INFO - Running initial metrics for today: 2025-10-20
+2025-10-20 11:55:20,353 - src.db_manager - INFO - Database connection established
+2025-10-20 11:55:20,353 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-10-20
+2025-10-20 11:55:20,356 - src.metric_runner - INFO -   02_new_users_last_60d_initial.sql: 1 row(s) affected
+2025-10-20 11:55:20,356 - src.metric_runner - INFO - new_users_last_60d: Total 1 row(s) affected for 2025-10-20
+2025-10-20 11:55:20,356 - src.metric_runner - INFO - Marked new_users_last_60d as initialized (date: 2025-10-20)
+2025-10-20 11:55:20,357 - src.metric_runner - INFO - Configuration saved to config/metrics_registry.json
+2025-10-20 11:55:20,357 - src.metric_runner - INFO - Successfully completed all metrics for 2025-10-20
+2025-10-20 11:55:20,365 - src.db_manager - INFO - Database connection closed
+2025-11-02 10:31:14,165 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 3 metrics to run
+2025-11-02 10:31:14,165 - src.metric_runner - INFO - Metrics: total_users, new_users_last_60d, top_100_games_played
+2025-11-02 10:31:14,166 - __main__ - INFO - Running incremental metrics for today: 2025-11-02
+2025-11-02 10:31:14,168 - src.db_manager - INFO - Database connection established
+2025-11-02 10:31:14,168 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-02
+2025-11-02 10:31:14,168 - src.metric_runner - ERROR - Failed to run total_users for 2025-11-02: SQL file not found: sql/incremental/01_total_users_incremental.sql
+2025-11-02 10:31:14,168 - src.metric_runner - ERROR - SQL file not found: sql/incremental/01_total_users_incremental.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/incremental/01_total_users_incremental.sql
+2025-11-02 10:31:14,170 - src.metric_runner - ERROR - Failed to run new_users_last_60d for 2025-11-02: SQL file not found: sql/incremental/02_new_users_last_60d_incremental.sql
+2025-11-02 10:31:14,170 - src.metric_runner - ERROR - SQL file not found: sql/incremental/02_new_users_last_60d_incremental.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/incremental/02_new_users_last_60d_incremental.sql
+2025-11-02 10:31:14,170 - src.metric_runner - ERROR - Failed to run top_100_games_played for 2025-11-02: SQL file not found: sql/incremental/03a_update_user_games_summary.sql
+2025-11-02 10:31:14,170 - src.metric_runner - ERROR - SQL file not found: sql/incremental/03a_update_user_games_summary.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/incremental/03a_update_user_games_summary.sql
+2025-11-02 10:31:14,171 - src.metric_runner - WARNING - Some metrics failed for 2025-11-02: ['total_users', 'new_users_last_60d', 'top_100_games_played']
+2025-11-02 10:31:14,171 - src.db_manager - INFO - Database connection closed
+2025-11-02 10:38:46,334 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 1 metrics to run
+2025-11-02 10:38:46,334 - src.metric_runner - INFO - Metrics: total_users
+2025-11-02 10:38:46,334 - __main__ - INFO - Running incremental metrics for today: 2025-11-02
+2025-11-02 10:38:46,336 - src.db_manager - INFO - Database connection established
+2025-11-02 10:38:46,336 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-02
+2025-11-02 10:38:46,337 - src.metric_runner - ERROR - Failed to run total_users for 2025-11-02: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+0' at line 4")
+2025-11-02 10:38:46,337 - src.metric_runner - ERROR - (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+0' at line 4")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+0' at line 4")
+2025-11-02 10:38:46,340 - src.metric_runner - WARNING - Some metrics failed for 2025-11-02: ['total_users']
+2025-11-02 10:38:46,340 - src.db_manager - INFO - Database connection closed
+2025-11-02 10:40:59,645 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 1 metrics to run
+2025-11-02 10:40:59,645 - src.metric_runner - INFO - Metrics: total_users
+2025-11-02 10:40:59,645 - __main__ - INFO - Running incremental metrics for today: 2025-11-02
+2025-11-02 10:40:59,647 - src.db_manager - INFO - Database connection established
+2025-11-02 10:40:59,647 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-02
+2025-11-02 10:40:59,648 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 10:40:59,648 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-02
+2025-11-02 10:40:59,648 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-02
+2025-11-02 10:40:59,655 - src.db_manager - INFO - Database connection closed
+2025-11-02 10:41:39,263 - src.metric_runner - INFO - Mode: INITIAL | Discovered 0 metrics to run
+2025-11-02 10:41:39,263 - __main__ - INFO - Running initial metrics for today: 2025-11-02
+2025-11-02 10:41:39,263 - src.metric_runner - ERROR - No metrics configured to run in initial mode
+2025-11-02 10:42:38,249 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-11-02 10:42:38,249 - src.metric_runner - INFO - Metrics: total_users
+2025-11-02 10:42:38,249 - __main__ - INFO - Running initial metrics for today: 2025-11-02
+2025-11-02 10:42:38,251 - src.db_manager - INFO - Database connection established
+2025-11-02 10:42:38,251 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-11-02
+2025-11-02 10:42:38,253 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 10:42:38,253 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-02
+2025-11-02 10:42:38,253 - src.metric_runner - INFO - Marked total_users as initialized (date: 2025-11-02)
+2025-11-02 10:42:38,254 - src.metric_runner - INFO - Configuration saved to config/metrics_registry.json
+2025-11-02 10:42:38,254 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-02
+2025-11-02 10:42:38,264 - src.db_manager - INFO - Database connection closed
+2025-11-02 10:44:57,049 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-11-02 10:44:57,049 - src.metric_runner - INFO - Metrics: total_users
+2025-11-02 10:44:57,049 - __main__ - INFO - Running initial metrics for today: 2025-11-02
+2025-11-02 10:44:57,051 - src.db_manager - INFO - Database connection established
+2025-11-02 10:44:57,051 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-11-02
+2025-11-02 10:44:57,053 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 10:44:57,053 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-02
+2025-11-02 10:44:57,053 - src.metric_runner - INFO - Marked total_users as initialized (date: 2025-11-02)
+2025-11-02 10:44:57,054 - src.metric_runner - INFO - Configuration saved to config/metrics_registry.json
+2025-11-02 10:44:57,054 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-02
+2025-11-02 10:44:57,062 - src.db_manager - INFO - Database connection closed
+2025-11-02 11:40:39,960 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 1 metrics to run
+2025-11-02 11:40:39,960 - src.metric_runner - INFO - Metrics: total_users
+2025-11-02 11:40:39,960 - __main__ - INFO - Running incremental metrics for date: --dry-run
+2025-11-02 11:40:39,962 - src.db_manager - INFO - Database connection established
+2025-11-02 11:40:39,962 - src.metric_runner - INFO - Starting incremental metrics calculation for --dry-run
+2025-11-02 11:40:39,963 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 11:40:39,963 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for --dry-run
+2025-11-02 11:40:39,963 - src.metric_runner - INFO - Successfully completed all metrics for --dry-run
+2025-11-02 11:40:39,970 - src.db_manager - INFO - Database connection closed
+2025-11-02 11:41:58,591 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 1 metrics to run
+2025-11-02 11:41:58,591 - src.metric_runner - INFO - Metrics: total_users
+2025-11-02 11:41:58,591 - __main__ - INFO - Running incremental recovery for date range: --mode to incremental
+2025-11-02 11:41:58,591 - src.metric_runner - INFO - Starting recovery from --mode to incremental
+2025-11-02 11:41:58,594 - __main__ - ERROR - Fatal error: time data '--mode' does not match format '%Y-%m-%d'
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/run_metrics.py", line 84, in main
+    failed = runner.recover_date_range(start_date, end_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 168, in recover_date_range
+    start = datetime.strptime(start_date, '%Y-%m-%d').date()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '--mode' does not match format '%Y-%m-%d'
+2025-11-02 11:43:13,142 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 1 metrics to run
+2025-11-02 11:43:13,142 - src.metric_runner - INFO - Metrics: total_users
+2025-11-02 11:43:13,143 - __main__ - INFO - Running incremental metrics for today: 2025-11-02
+2025-11-02 11:43:13,145 - src.db_manager - INFO - Database connection established
+2025-11-02 11:43:13,145 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-02
+2025-11-02 11:43:13,146 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 11:43:13,146 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-02
+2025-11-02 11:43:13,146 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-02
+2025-11-02 11:43:13,152 - src.db_manager - INFO - Database connection closed
+2025-11-02 11:54:54,978 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-02 11:54:54,978 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_monthly, total_users_weekly, total_users
+2025-11-02 11:54:54,978 - __main__ - INFO - Running incremental metrics for date: --dry-run
+2025-11-02 11:54:54,981 - src.db_manager - INFO - Database connection established
+2025-11-02 11:54:54,981 - src.metric_runner - INFO - Starting incremental metrics calculation for --dry-run
+2025-11-02 11:54:54,983 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-02 11:54:54,983 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for --dry-run
+2025-11-02 11:54:54,983 - src.metric_runner - ERROR - Failed to run total_users_monthly for --dry-run: SQL file not found: sql/incremental/01_total_users_monthly.sql
+2025-11-02 11:54:54,983 - src.metric_runner - ERROR - SQL file not found: sql/incremental/01_total_users_monthly.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/incremental/01_total_users_monthly.sql
+2025-11-02 11:54:54,985 - src.metric_runner - ERROR - Failed to run total_users_weekly for --dry-run: SQL file not found: sql/incremental/01_total_users_weekly.sql
+2025-11-02 11:54:54,985 - src.metric_runner - ERROR - SQL file not found: sql/incremental/01_total_users_weekly.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/incremental/01_total_users_weekly.sql
+2025-11-02 11:54:54,987 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 11:54:54,987 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for --dry-run
+2025-11-02 11:54:54,987 - src.metric_runner - WARNING - Some metrics failed for --dry-run: ['total_users_monthly', 'total_users_weekly']
+2025-11-02 11:54:54,993 - src.db_manager - INFO - Database connection closed
+2025-11-02 11:56:49,498 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-02 11:56:49,498 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-02 11:56:49,498 - __main__ - INFO - Running incremental metrics for date: --dry-run
+2025-11-02 11:56:49,500 - src.db_manager - INFO - Database connection established
+2025-11-02 11:56:49,501 - src.metric_runner - INFO - Starting incremental metrics calculation for --dry-run
+2025-11-02 11:56:49,503 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-02 11:56:49,503 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for --dry-run
+2025-11-02 11:56:49,503 - src.metric_runner - ERROR - Failed to run total_users_weekly for --dry-run: %x format: an integer is required, not dict
+2025-11-02 11:56:49,503 - src.metric_runner - ERROR - %x format: an integer is required, not dict
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 49, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 151, in execute
+    query = self.mogrify(query, args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 129, in mogrify
+    query = query % self._escape_args(args, conn)
+            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TypeError: %x format: an integer is required, not dict
+2025-11-02 11:56:49,506 - src.metric_runner - ERROR - Failed to run total_users_monthly for --dry-run: unsupported format character 'Y' (0x59) at index 138
+2025-11-02 11:56:49,506 - src.metric_runner - ERROR - unsupported format character 'Y' (0x59) at index 138
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 49, in execute
+    rows = cursor.execute(sql, params or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 151, in execute
+    query = self.mogrify(query, args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 129, in mogrify
+    query = query % self._escape_args(args, conn)
+            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ValueError: unsupported format character 'Y' (0x59) at index 138
+2025-11-02 11:56:49,507 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 11:56:49,507 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for --dry-run
+2025-11-02 11:56:49,507 - src.metric_runner - WARNING - Some metrics failed for --dry-run: ['total_users_weekly', 'total_users_monthly']
+2025-11-02 11:56:49,513 - src.db_manager - INFO - Database connection closed
+2025-11-02 12:05:41,419 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-02 12:05:41,419 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-02 12:05:41,419 - __main__ - INFO - Running incremental metrics for date: --dry-run
+2025-11-02 12:05:41,421 - src.db_manager - INFO - Database connection established
+2025-11-02 12:05:41,421 - src.metric_runner - INFO - Starting incremental metrics calculation for --dry-run
+2025-11-02 12:05:41,423 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-02 12:05:41,423 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for --dry-run
+2025-11-02 12:05:41,424 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-02 12:05:41,424 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for --dry-run
+2025-11-02 12:05:41,425 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-02 12:05:41,425 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for --dry-run
+2025-11-02 12:05:41,426 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-02 12:05:41,426 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for --dry-run
+2025-11-02 12:05:41,426 - src.metric_runner - INFO - Successfully completed all metrics for --dry-run
+2025-11-02 12:05:41,432 - src.db_manager - INFO - Database connection closed
+2025-11-03 02:00:01,195 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-03 02:00:01,195 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-03 02:00:01,195 - __main__ - INFO - Running incremental recovery for date range: --mode to incremental
+2025-11-03 02:00:01,195 - src.metric_runner - INFO - Starting recovery from --mode to incremental
+2025-11-03 02:00:01,199 - __main__ - ERROR - Fatal error: time data '--mode' does not match format '%Y-%m-%d'
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/run_metrics.py", line 84, in main
+    failed = runner.recover_date_range(start_date, end_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 168, in recover_date_range
+    start = datetime.strptime(start_date, '%Y-%m-%d').date()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '--mode' does not match format '%Y-%m-%d'
+2025-11-03 04:47:32,749 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-03 04:47:32,749 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-03 04:47:32,749 - __main__ - INFO - Running incremental metrics for today: 2025-11-03
+2025-11-03 04:47:32,751 - src.db_manager - INFO - Database connection established
+2025-11-03 04:47:32,751 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-03
+2025-11-03 04:47:32,753 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-03 04:47:32,754 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-03
+2025-11-03 04:47:32,754 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-03 04:47:32,754 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-03
+2025-11-03 04:47:32,755 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-03 04:47:32,755 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-03
+2025-11-03 04:47:32,756 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-03 04:47:32,756 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-03
+2025-11-03 04:47:32,756 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-03
+2025-11-03 04:47:32,762 - src.db_manager - INFO - Database connection closed
+2025-11-04 02:00:02,007 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-04 02:00:02,008 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-04 02:00:02,008 - __main__ - INFO - Running incremental metrics for today: 2025-11-04
+2025-11-04 02:00:02,010 - src.db_manager - INFO - Database connection established
+2025-11-04 02:00:02,010 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-04
+2025-11-04 02:00:02,013 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-04 02:00:02,013 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,014 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-04 02:00:02,014 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,015 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-04 02:00:02,015 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,016 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-04 02:00:02,016 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,016 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-04
+2025-11-04 02:00:02,023 - src.db_manager - INFO - Database connection closed
+2025-11-05 02:00:01,914 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-05 02:00:01,914 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-05 02:00:01,914 - __main__ - INFO - Running incremental metrics for today: 2025-11-05
+2025-11-05 02:00:01,917 - src.db_manager - INFO - Database connection established
+2025-11-05 02:00:01,917 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-05
+2025-11-05 02:00:01,919 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-05 02:00:01,920 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,921 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-05 02:00:01,921 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,921 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-05 02:00:01,921 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,922 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-05 02:00:01,923 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,923 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-05
+2025-11-05 02:00:01,929 - src.db_manager - INFO - Database connection closed
+2025-11-06 02:00:02,066 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-06 02:00:02,067 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-06 02:00:02,067 - __main__ - INFO - Running incremental metrics for today: 2025-11-06
+2025-11-06 02:00:02,069 - src.db_manager - INFO - Database connection established
+2025-11-06 02:00:02,069 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-06
+2025-11-06 02:00:02,072 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-06 02:00:02,072 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,073 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-06 02:00:02,073 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,074 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-06 02:00:02,074 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,075 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-06 02:00:02,075 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,075 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-06
+2025-11-06 02:00:02,082 - src.db_manager - INFO - Database connection closed
+2025-11-07 02:00:01,249 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-07 02:00:01,250 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-07 02:00:01,250 - __main__ - INFO - Running incremental metrics for today: 2025-11-07
+2025-11-07 02:00:01,252 - src.db_manager - INFO - Database connection established
+2025-11-07 02:00:01,252 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-07
+2025-11-07 02:00:01,255 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-07 02:00:01,255 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,256 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-07 02:00:01,256 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,257 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-07 02:00:01,257 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,258 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-07 02:00:01,258 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,258 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-07
+2025-11-07 02:00:01,264 - src.db_manager - INFO - Database connection closed
+2025-11-08 02:00:01,444 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-08 02:00:01,444 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-08 02:00:01,444 - __main__ - INFO - Running incremental metrics for today: 2025-11-08
+2025-11-08 02:00:01,446 - src.db_manager - INFO - Database connection established
+2025-11-08 02:00:01,447 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-08
+2025-11-08 02:00:01,449 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-08 02:00:01,450 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,453 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-08 02:00:01,453 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,454 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-08 02:00:01,454 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,455 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-08 02:00:01,456 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,456 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-08
+2025-11-08 02:00:01,463 - src.db_manager - INFO - Database connection closed
+2025-11-09 02:00:01,626 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-09 02:00:01,626 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-09 02:00:01,626 - __main__ - INFO - Running incremental metrics for today: 2025-11-09
+2025-11-09 02:00:01,628 - src.db_manager - INFO - Database connection established
+2025-11-09 02:00:01,628 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-09
+2025-11-09 02:00:01,631 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-09 02:00:01,631 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,632 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-09 02:00:01,632 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,633 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-09 02:00:01,633 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,634 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-09 02:00:01,634 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,634 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-09
+2025-11-09 02:00:01,641 - src.db_manager - INFO - Database connection closed
+2025-11-10 02:00:01,770 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-10 02:00:01,770 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-10 02:00:01,770 - __main__ - INFO - Running incremental metrics for today: 2025-11-10
+2025-11-10 02:00:01,773 - src.db_manager - INFO - Database connection established
+2025-11-10 02:00:01,773 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-10
+2025-11-10 02:00:01,775 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-10 02:00:01,776 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,776 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-10 02:00:01,776 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,777 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-10 02:00:01,777 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,778 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-10 02:00:01,778 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,778 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-10
+2025-11-10 02:00:01,785 - src.db_manager - INFO - Database connection closed
+2025-11-11 02:00:01,906 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-11 02:00:01,906 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-11 02:00:01,907 - __main__ - INFO - Running incremental metrics for today: 2025-11-11
+2025-11-11 02:00:01,909 - src.db_manager - INFO - Database connection established
+2025-11-11 02:00:01,909 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-11
+2025-11-11 02:00:01,912 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-11 02:00:01,912 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,913 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-11 02:00:01,913 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,914 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-11 02:00:01,914 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,914 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-11 02:00:01,915 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,915 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-11
+2025-11-11 02:00:01,922 - src.db_manager - INFO - Database connection closed
+2025-11-11 10:35:04,437 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-11-11 10:35:04,437 - src.metric_runner - INFO - Metrics: total_deposits_daily
+2025-11-11 10:35:04,437 - __main__ - INFO - Running initial metrics for today: 2025-11-11
+2025-11-11 10:35:04,439 - src.db_manager - INFO - Database connection established
+2025-11-11 10:35:04,440 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-11-11
+2025-11-11 10:35:04,440 - src.metric_runner - ERROR - Failed to run total_deposits_daily for 2025-11-11: SQL file not found: sql/initial/01_total_deposits_daily.sql
+2025-11-11 10:35:04,440 - src.metric_runner - ERROR - SQL file not found: sql/initial/01_total_deposits_daily.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/initial/01_total_deposits_daily.sql
+2025-11-11 10:35:04,442 - src.metric_runner - WARNING - Some metrics failed for 2025-11-11: ['total_deposits_daily']
+2025-11-11 10:35:04,442 - src.db_manager - INFO - Database connection closed
+2025-11-11 10:36:43,404 - src.metric_runner - WARNING - Skipping uninitialized metric: total_deposits_daily (run --initial first)
+2025-11-11 10:36:43,404 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-11 10:36:43,404 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-11 10:36:43,404 - __main__ - INFO - Running incremental metrics for today: 2025-11-11
+2025-11-11 10:36:43,406 - src.db_manager - INFO - Database connection established
+2025-11-11 10:36:43,406 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-11
+2025-11-11 10:36:43,409 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-11 10:36:43,409 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:36:43,409 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-11 10:36:43,410 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:36:43,410 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-11 10:36:43,410 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:36:43,411 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-11 10:36:43,411 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:36:43,411 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-11
+2025-11-11 10:36:43,418 - src.db_manager - INFO - Database connection closed
+2025-11-11 10:37:29,465 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-11-11 10:37:29,465 - src.metric_runner - INFO - Metrics: total_deposits_daily
+2025-11-11 10:37:29,465 - __main__ - INFO - Running initial metrics for today: 2025-11-11
+2025-11-11 10:37:29,468 - src.db_manager - INFO - Database connection established
+2025-11-11 10:37:29,468 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-11-11
+2025-11-11 10:37:29,468 - src.metric_runner - ERROR - Failed to run total_deposits_daily for 2025-11-11: SQL file not found: sql/initial/01_total_deposits_daily.sql
+2025-11-11 10:37:29,468 - src.metric_runner - ERROR - SQL file not found: sql/initial/01_total_deposits_daily.sql
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 99, in run_metric
+    sql = self.sql.load(sql_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/sql_loader.py", line 20, in load
+    raise FileNotFoundError(f"SQL file not found: {file_path}")
+FileNotFoundError: SQL file not found: sql/initial/01_total_deposits_daily.sql
+2025-11-11 10:37:29,470 - src.metric_runner - WARNING - Some metrics failed for 2025-11-11: ['total_deposits_daily']
+2025-11-11 10:37:29,470 - src.db_manager - INFO - Database connection closed
+2025-11-11 10:38:10,962 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-11-11 10:38:10,962 - src.metric_runner - INFO - Metrics: total_deposits_daily
+2025-11-11 10:38:10,962 - __main__ - INFO - Running initial metrics for today: 2025-11-11
+2025-11-11 10:38:10,964 - src.db_manager - INFO - Database connection established
+2025-11-11 10:38:10,964 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-11-11
+2025-11-11 10:38:10,966 - src.metric_runner - ERROR - Failed to run total_deposits_daily for 2025-11-11: (1062, "Duplicate entry '2025-11-10' for key 'uct_total_deposits_both_daily.date_'")
+2025-11-11 10:38:10,966 - src.metric_runner - ERROR - (1062, "Duplicate entry '2025-11-10' for key 'uct_total_deposits_both_daily.date_'")
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 110, in run_metric
+    rows = self.db.execute(sql, exec_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/db_manager.py", line 48, in execute
+    with conn.cursor() as cursor:
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 63, in __exit__
+    self.close()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 53, in close
+    while self.nextset():
+          ^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 98, in nextset
+    return self._nextset(False)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/cursors.py", line 93, in _nextset
+    conn.next_result(unbuffered=unbuffered)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 579, in next_result
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/ubuntu/GameOn-BI/venv/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry '2025-11-10' for key 'uct_total_deposits_both_daily.date_'")
+2025-11-11 10:38:10,969 - src.metric_runner - WARNING - Some metrics failed for 2025-11-11: ['total_deposits_daily']
+2025-11-11 10:38:10,973 - src.db_manager - INFO - Database connection closed
+2025-11-11 10:39:11,887 - src.metric_runner - INFO - Mode: INITIAL | Discovered 1 metrics to run
+2025-11-11 10:39:11,888 - src.metric_runner - INFO - Metrics: total_deposits_daily
+2025-11-11 10:39:11,888 - __main__ - INFO - Running initial metrics for today: 2025-11-11
+2025-11-11 10:39:11,890 - src.db_manager - INFO - Database connection established
+2025-11-11 10:39:11,890 - src.metric_runner - INFO - Starting initial metrics calculation for 2025-11-11
+2025-11-11 10:39:11,892 - src.metric_runner - INFO -   05_total_deposits_daily.sql: 0 row(s) affected
+2025-11-11 10:39:11,892 - src.metric_runner - INFO - total_deposits_daily: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:39:11,892 - src.metric_runner - INFO - Marked total_deposits_daily as initialized (date: 2025-11-11)
+2025-11-11 10:39:11,893 - src.metric_runner - INFO - Configuration saved to config/metrics_registry.json
+2025-11-11 10:39:11,893 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-11
+2025-11-11 10:39:11,901 - src.db_manager - INFO - Database connection closed
+2025-11-11 10:42:40,131 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 5 metrics to run
+2025-11-11 10:42:40,132 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users, total_deposits_daily
+2025-11-11 10:42:40,132 - __main__ - INFO - Running incremental metrics for today: 2025-11-11
+2025-11-11 10:42:40,134 - src.db_manager - INFO - Database connection established
+2025-11-11 10:42:40,134 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-11
+2025-11-11 10:42:40,136 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-11 10:42:40,136 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:42:40,137 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-11 10:42:40,137 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:42:40,138 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-11 10:42:40,138 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:42:40,139 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-11 10:42:40,139 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:42:40,140 - src.metric_runner - INFO -   05_total_deposits_daily.sql: 0 row(s) affected
+2025-11-11 10:42:40,140 - src.metric_runner - INFO - total_deposits_daily: Total 0 row(s) affected for 2025-11-11
+2025-11-11 10:42:40,140 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-11
+2025-11-11 10:42:40,146 - src.db_manager - INFO - Database connection closed

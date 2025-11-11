@@ -1,0 +1,339 @@
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-03 02:00:01] [INFO] Starting cron job execution
+[2025-11-03 02:00:01] [INFO] Timestamp: 2025-11-03 02:00:01
+==============================================================================
+
+[2025-11-03 02:00:01] [INFO] Checking prerequisites...
+[2025-11-03 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-03 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-03 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-03 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-03 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-03 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-03 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-03 02:00:01,195 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-03 02:00:01,195 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-03 02:00:01,195 - __main__ - INFO - Running incremental recovery for date range: --mode to incremental
+2025-11-03 02:00:01,195 - src.metric_runner - INFO - Starting recovery from --mode to incremental
+2025-11-03 02:00:01,199 - __main__ - ERROR - Fatal error: time data '--mode' does not match format '%Y-%m-%d'
+Traceback (most recent call last):
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/run_metrics.py", line 84, in main
+    failed = runner.recover_date_range(start_date, end_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/GameOn-BI/bi_metrics_etl/src/metric_runner.py", line 168, in recover_date_range
+    start = datetime.strptime(start_date, '%Y-%m-%d').date()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '--mode' does not match format '%Y-%m-%d'
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-04 02:00:01] [INFO] Starting cron job execution
+[2025-11-04 02:00:01] [INFO] Timestamp: 2025-11-04 02:00:01
+==============================================================================
+
+[2025-11-04 02:00:01] [INFO] Checking prerequisites...
+[2025-11-04 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-04 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-04 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-04 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-04 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-04 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-04 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-04 02:00:02,007 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-04 02:00:02,008 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-04 02:00:02,008 - __main__ - INFO - Running incremental metrics for today: 2025-11-04
+2025-11-04 02:00:02,010 - src.db_manager - INFO - Database connection established
+2025-11-04 02:00:02,010 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-04
+2025-11-04 02:00:02,013 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-04 02:00:02,013 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,014 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-04 02:00:02,014 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,015 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-04 02:00:02,015 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,016 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-04 02:00:02,016 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-04
+2025-11-04 02:00:02,016 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-04
+2025-11-04 02:00:02,023 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-04 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-05 02:00:01] [INFO] Starting cron job execution
+[2025-11-05 02:00:01] [INFO] Timestamp: 2025-11-05 02:00:01
+==============================================================================
+
+[2025-11-05 02:00:01] [INFO] Checking prerequisites...
+[2025-11-05 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-05 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-05 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-05 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-05 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-05 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-05 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-05 02:00:01,914 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-05 02:00:01,914 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-05 02:00:01,914 - __main__ - INFO - Running incremental metrics for today: 2025-11-05
+2025-11-05 02:00:01,917 - src.db_manager - INFO - Database connection established
+2025-11-05 02:00:01,917 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-05
+2025-11-05 02:00:01,919 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-05 02:00:01,920 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,921 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-05 02:00:01,921 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,921 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-05 02:00:01,921 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,922 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-05 02:00:01,923 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-05
+2025-11-05 02:00:01,923 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-05
+2025-11-05 02:00:01,929 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-05 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-06 02:00:01] [INFO] Starting cron job execution
+[2025-11-06 02:00:01] [INFO] Timestamp: 2025-11-06 02:00:01
+==============================================================================
+
+[2025-11-06 02:00:01] [INFO] Checking prerequisites...
+[2025-11-06 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-06 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-06 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-06 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-06 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-06 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-06 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-06 02:00:02,066 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-06 02:00:02,067 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-06 02:00:02,067 - __main__ - INFO - Running incremental metrics for today: 2025-11-06
+2025-11-06 02:00:02,069 - src.db_manager - INFO - Database connection established
+2025-11-06 02:00:02,069 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-06
+2025-11-06 02:00:02,072 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-06 02:00:02,072 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,073 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-06 02:00:02,073 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,074 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-06 02:00:02,074 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,075 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-06 02:00:02,075 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-06
+2025-11-06 02:00:02,075 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-06
+2025-11-06 02:00:02,082 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-06 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-07 02:00:01] [INFO] Starting cron job execution
+[2025-11-07 02:00:01] [INFO] Timestamp: 2025-11-07 02:00:01
+==============================================================================
+
+[2025-11-07 02:00:01] [INFO] Checking prerequisites...
+[2025-11-07 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-07 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-07 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-07 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-07 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-07 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-07 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-07 02:00:01,249 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-07 02:00:01,250 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-07 02:00:01,250 - __main__ - INFO - Running incremental metrics for today: 2025-11-07
+2025-11-07 02:00:01,252 - src.db_manager - INFO - Database connection established
+2025-11-07 02:00:01,252 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-07
+2025-11-07 02:00:01,255 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-07 02:00:01,255 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,256 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-07 02:00:01,256 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,257 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-07 02:00:01,257 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,258 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-07 02:00:01,258 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-07
+2025-11-07 02:00:01,258 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-07
+2025-11-07 02:00:01,264 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-07 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-08 02:00:01] [INFO] Starting cron job execution
+[2025-11-08 02:00:01] [INFO] Timestamp: 2025-11-08 02:00:01
+==============================================================================
+
+[2025-11-08 02:00:01] [INFO] Checking prerequisites...
+[2025-11-08 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-08 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-08 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-08 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-08 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-08 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-08 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-08 02:00:01,444 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-08 02:00:01,444 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-08 02:00:01,444 - __main__ - INFO - Running incremental metrics for today: 2025-11-08
+2025-11-08 02:00:01,446 - src.db_manager - INFO - Database connection established
+2025-11-08 02:00:01,447 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-08
+2025-11-08 02:00:01,449 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-08 02:00:01,450 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,453 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-08 02:00:01,453 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,454 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-08 02:00:01,454 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,455 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-08 02:00:01,456 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-08
+2025-11-08 02:00:01,456 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-08
+2025-11-08 02:00:01,463 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-08 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-09 02:00:01] [INFO] Starting cron job execution
+[2025-11-09 02:00:01] [INFO] Timestamp: 2025-11-09 02:00:01
+==============================================================================
+
+[2025-11-09 02:00:01] [INFO] Checking prerequisites...
+[2025-11-09 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-09 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-09 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-09 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-09 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-09 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-09 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-09 02:00:01,626 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-09 02:00:01,626 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-09 02:00:01,626 - __main__ - INFO - Running incremental metrics for today: 2025-11-09
+2025-11-09 02:00:01,628 - src.db_manager - INFO - Database connection established
+2025-11-09 02:00:01,628 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-09
+2025-11-09 02:00:01,631 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-09 02:00:01,631 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,632 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-09 02:00:01,632 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,633 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-09 02:00:01,633 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,634 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-09 02:00:01,634 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-09
+2025-11-09 02:00:01,634 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-09
+2025-11-09 02:00:01,641 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-09 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-10 02:00:01] [INFO] Starting cron job execution
+[2025-11-10 02:00:01] [INFO] Timestamp: 2025-11-10 02:00:01
+==============================================================================
+
+[2025-11-10 02:00:01] [INFO] Checking prerequisites...
+[2025-11-10 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-10 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-10 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-10 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-10 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-10 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-10 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-10 02:00:01,770 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-10 02:00:01,770 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-10 02:00:01,770 - __main__ - INFO - Running incremental metrics for today: 2025-11-10
+2025-11-10 02:00:01,773 - src.db_manager - INFO - Database connection established
+2025-11-10 02:00:01,773 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-10
+2025-11-10 02:00:01,775 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-10 02:00:01,776 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,776 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-10 02:00:01,776 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,777 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-10 02:00:01,777 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,778 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-10 02:00:01,778 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-10
+2025-11-10 02:00:01,778 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-10
+2025-11-10 02:00:01,785 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-10 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
+
+==============================================================================
+BI METRICS ETL - CRON JOB EXECUTION
+==============================================================================
+[2025-11-11 02:00:01] [INFO] Starting cron job execution
+[2025-11-11 02:00:01] [INFO] Timestamp: 2025-11-11 02:00:01
+==============================================================================
+
+[2025-11-11 02:00:01] [INFO] Checking prerequisites...
+[2025-11-11 02:00:01] [SUCCESS] All prerequisites checked successfully
+[2025-11-11 02:00:01] [INFO] Changing to scripts directory: /home/ubuntu/GameOn-BI/bi_metrics_etl
+[2025-11-11 02:00:01] [INFO] Activating virtual environment: /home/ubuntu/GameOn-BI/venv
+[2025-11-11 02:00:01] [SUCCESS] Virtual environment activated
+[2025-11-11 02:00:01] [INFO] Using Python: Python 3.12.3
+[2025-11-11 02:00:01] [ERROR] .env file not found at: /home/ubuntu/GameOn-BI/bi_metrics_etl/.env
+[2025-11-11 02:00:01] [INFO] Executing run_metrics.py...
+------------------------------------------------------------------------------
+2025-11-11 02:00:01,906 - src.metric_runner - INFO - Mode: INCREMENTAL | Discovered 4 metrics to run
+2025-11-11 02:00:01,906 - src.metric_runner - INFO - Metrics: total_users_daily, total_users_weekly, total_users_monthly, total_users
+2025-11-11 02:00:01,907 - __main__ - INFO - Running incremental metrics for today: 2025-11-11
+2025-11-11 02:00:01,909 - src.db_manager - INFO - Database connection established
+2025-11-11 02:00:01,909 - src.metric_runner - INFO - Starting incremental metrics calculation for 2025-11-11
+2025-11-11 02:00:01,912 - src.metric_runner - INFO -   01_total_users_daily.sql: 0 row(s) affected
+2025-11-11 02:00:01,912 - src.metric_runner - INFO - total_users_daily: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,913 - src.metric_runner - INFO -   02_total_users_weekly.sql: 0 row(s) affected
+2025-11-11 02:00:01,913 - src.metric_runner - INFO - total_users_weekly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,914 - src.metric_runner - INFO -   03_total_users_monthly.sql: 0 row(s) affected
+2025-11-11 02:00:01,914 - src.metric_runner - INFO - total_users_monthly: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,914 - src.metric_runner - INFO -   04_total_users_cumulative.sql: 0 row(s) affected
+2025-11-11 02:00:01,915 - src.metric_runner - INFO - total_users: Total 0 row(s) affected for 2025-11-11
+2025-11-11 02:00:01,915 - src.metric_runner - INFO - Successfully completed all metrics for 2025-11-11
+2025-11-11 02:00:01,922 - src.db_manager - INFO - Database connection closed
+------------------------------------------------------------------------------
+[2025-11-11 02:00:01] [SUCCESS] Metrics job completed successfully
+
+==============================================================================
+✅ JOB COMPLETED SUCCESSFULLY
+==============================================================================
