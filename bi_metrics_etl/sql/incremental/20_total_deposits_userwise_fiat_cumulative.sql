@@ -21,3 +21,6 @@ WHERE tduf.date_ = @yesterday
 ON DUPLICATE KEY UPDATE
     total_completed_amount = VALUES(total_completed_amount),
     updated_at = VALUES(updated_at);
+
+
+--not done

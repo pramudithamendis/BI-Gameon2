@@ -87,3 +87,5 @@ ON DUPLICATE KEY UPDATE
 SELECT * 
 FROM total_deposits_fiat_cumulative
 ORDER BY date_ DESC;
+
+--checked

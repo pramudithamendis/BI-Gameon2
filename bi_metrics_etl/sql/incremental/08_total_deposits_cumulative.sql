@@ -96,4 +96,4 @@ WHERE date_ >= DATE_SUB(@yesterday, INTERVAL 2 DAY)
 ORDER BY date_;
 
 
---checked
+---checked
