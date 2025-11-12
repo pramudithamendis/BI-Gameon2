@@ -1,7 +1,7 @@
 SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
  
 SET @cutoff := '2025-09-27 18:30:00';
-insert into uct_total_withdrawals_both_daily(date_,total_completed_amount, total_transactions)
+insert into total_withdrawals_daily(date_,total_completed_amount, total_transactions)
 SELECT 
 	   DATE(w.created_at) AS date_,
 	   SUM(w.coins) as total_completed_coins,

@@ -1,5 +1,5 @@
 SET @cutoff := '2025-09-27 18:30:00';
-insert into uct_total_withdrawals_both_weekly(year_week,week_start_date,week_end_date,total_completed_amount, total_transactions)
+insert into total_withdrawals_weekly(year_week,week_start_date,week_end_date,total_completed_amount, total_transactions)
 SELECT 
     YEARWEEK(w.created_at, 1) AS year_week,
     MIN(DATE(w.created_at)) AS week_start_date,

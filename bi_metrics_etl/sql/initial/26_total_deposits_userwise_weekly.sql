@@ -1,5 +1,5 @@
 SET @cutoff := '2025-09-27 18:30:00'; 
-insert into total_deposits_both_weekly_userwise(user_id, email,first_name,last_name,year,week_number,week_label,total_completed_amount,total_transactions) 
+insert into total_deposits_userwise_weekly(user_id, email,first_name,last_name,year,week_number,week_label,total_completed_amount,total_transactions) 
 SELECT w.user AS user_id,
  u.email, 
  u.first_name, 

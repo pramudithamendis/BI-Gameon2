@@ -1,5 +1,5 @@
 SET @cutoff := '2025-09-27 18:30:00';
-insert into total_withdrawals_both_total(total_completed_amount, total_transactions)
+insert into total_withdrawals_cumulative(total_completed_amount, total_transactions)
 SELECT 
 SUM(w.coins) AS total_completed_amount,
 COUNT(*) AS total_transactions

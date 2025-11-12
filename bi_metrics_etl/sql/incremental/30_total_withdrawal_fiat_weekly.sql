@@ -1,6 +1,6 @@
 SET @last_week_yearweek := YEARWEEK(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 WEEK), '+00:00', '+08:00'), 1);
 SET @cutoff := '2025-09-27 18:30:00';
-insert into uct_total_withdrawals_fiat_weekly(year_week,week_start_date,week_end_date,total_completed_amount, total_transactions)
+insert into total_withdrawal_fiat_weekly(year_week,week_start_date,week_end_date,total_completed_amount, total_transactions)
 SELECT 
     YEARWEEK(w.created_at, 1) AS year_week,
     MIN(DATE(w.created_at)) AS week_start_date,

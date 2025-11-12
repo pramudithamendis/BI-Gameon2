@@ -1,5 +1,5 @@
 SET @cutoff := '2025-09-27 18:30:00';
-insert into total_withdrawals_both_monthly(month_,total_completed_amount,total_transactions)
+insert into total_withdrawals_monthly(month_,total_completed_amount,total_transactions)
 SELECT 
     DATE_FORMAT(w.created_at, '%Y-%m') AS month,
     SUM(w.coins) AS total_completed_amount,
