@@ -1,18 +1,48 @@
 
+-- SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
+-- SET @cutoff := '2025-09-27 18:30:00';
+-- insert into total_deposits_daily(date_,total_completed_amount, total_transactions)
+-- SELECT 
+-- 	   DATE(w.created_at) AS date_,
+-- 	   SUM(w.coins) as total_completed_coins,
+-- 	    COUNT(*) AS total_transactions
+-- FROM gaming_app_backend.user_coin_transaction w
+-- JOIN gaming_app_backend.user u ON w.user = u.id
+-- WHERE w.created_at >= @cutoff and (w.user_coin_transaction_method = 4 or w.user_coin_transaction_method = 5)
+--   AND DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00')) = @yesterday
+-- GROUP BY DATE(w.created_at)
+-- ORDER BY DATE(w.created_at) DESC
+-- ON DUPLICATE KEY UPDATE
+--     total_completed_amount = VALUES(total_completed_amount),
+--     total_transactions = VALUES(total_transactions),
+--     updated_at = CURRENT_TIMESTAMP;
+
+USE gaming_app_bi;
+
+-- Get yesterday's date in Singapore timezone
 SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
+
+-- Set cutoff datetime
 SET @cutoff := '2025-09-27 18:30:00';
-insert into total_deposits_daily(date_,total_completed_amount, total_transactions)
+
+-- Insert or update yesterday's total deposit data
+INSERT INTO total_deposits_daily (date_, total_completed_amount, total_transactions)
 SELECT 
-	   DATE(w.created_at) AS date_,
-	   SUM(w.coins) as total_completed_coins,
-	    COUNT(*) AS total_transactions
+    DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00')) AS date_,
+    SUM(w.coins) AS total_completed_amount,
+    COUNT(*) AS total_transactions
 FROM gaming_app_backend.user_coin_transaction w
-JOIN gaming_app_backend.user u ON w.user = u.id
-WHERE w.created_at >= @cutoff and (w.user_coin_transaction_method = 4 or w.user_coin_transaction_method = 5)
-  AND DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00')) = @yesterday
-GROUP BY DATE(w.created_at)
-ORDER BY DATE(w.created_at) DESC
+JOIN gaming_app_backend.user u 
+    ON w.user = u.id
+WHERE 
+    w.created_at >= @cutoff
+    AND (w.user_coin_transaction_method = 4 OR w.user_coin_transaction_method = 5)
+    AND DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00')) = @yesterday
+GROUP BY date_
 ON DUPLICATE KEY UPDATE
     total_completed_amount = VALUES(total_completed_amount),
     total_transactions = VALUES(total_transactions),
     updated_at = CURRENT_TIMESTAMP;
+    
+  -- done 
+

@@ -21,3 +21,6 @@ VALUES (@yesterday, @previous_total + @yesterday_count)
 ON DUPLICATE KEY UPDATE 
     value = @previous_total + @yesterday_count,
     updated_at = CURRENT_TIMESTAMP;
+
+
+--checked and done 
