@@ -7,6 +7,7 @@ CREATE TABLE total_users_daily (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+
 -- Create table for weekly totals
 CREATE TABLE total_users_weekly (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,6 +41,15 @@ CREATE TABLE total_users_cumulative (
 
   ALTER TABLE total_users_cumulative ADD UNIQUE KEY idx_date (date);
 
+CREATE TABLE total_deposits_daily (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL UNIQUE,
+    total_completed_amount DECIMAL(18,2) NOT NULL DEFAULT 0,
+    total_transactions INT NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
   CREATE TABLE total_deposits_weekly (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     year_week INT NOT NULL unique,                       -- e.g., 202544 (YYYYWW format)
@@ -62,6 +72,7 @@ CREATE TABLE total_deposits_monthly (
 -- 8
 CREATE TABLE total_deposits_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY unique,
+    date_ DATETIME,
     total_completed_amount DECIMAL(18,2) NOT NULL,
     total_transactions INT NOT NULL,
     calculated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -102,8 +113,9 @@ CREATE TABLE total_deposits_fiat_monthly (
 -- 12
 CREATE TABLE total_deposits_fiat_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY unique,
+    date_ DATETIME,
     total_completed_amount DECIMAL(18,2) NOT NULL,
-    total_transactions INT NOT NULL,
+    total_transactions INT NOT NULL DEFAULT 0,
     calculated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -143,8 +155,9 @@ CREATE TABLE total_deposits_crypto_monthly (
 -- 16
 CREATE TABLE total_deposits_crypto_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY unique,
+    date_ datetime,
     total_completed_amount DECIMAL(18,2) NOT NULL,
-    total_transactions INT NOT NULL,
+    total_transactions INT NOT NULL default 0,
     calculated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -199,6 +212,7 @@ CREATE TABLE total_deposits_userwise_fiat_monthly (
 -- 20
 CREATE TABLE total_deposits_userwise_fiat_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date_ datetime,
     user_id BIGINT NOT NULL unique,
     email VARCHAR(255) NOT NULL,
     first_name VARCHAR(150),
@@ -206,8 +220,10 @@ CREATE TABLE total_deposits_userwise_fiat_cumulative (
     total_completed_amount DECIMAL(18,2) DEFAULT 0,
     total_transactions INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_user_email (date_, user_id )
 );
+
 
 -- 21
 CREATE TABLE total_deposits_userwise_crypto_daily (
@@ -364,8 +380,9 @@ CREATE TABLE total_withdrawal_fiat_monthly (
 -- 32
 CREATE TABLE total_withdrawal_fiat_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY unique,
+    date_ datetime,
     total_completed_amount DECIMAL(18,2) NOT NULL,
-    total_transactions INT NOT NULL,
+    total_transactions INT default 0,
     calculated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -405,8 +422,9 @@ CREATE TABLE total_withdrawal_crypto_monthly (
 -- 36
 CREATE TABLE total_withdrawal_crypto_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY unique,
+    date_ datetime,
     total_completed_amount DECIMAL(18,2) NOT NULL,
-    total_transactions INT NOT NULL,
+    total_transactions INT default 0,
     calculated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -662,6 +680,7 @@ CREATE TABLE total_game_plays_monthly (
 -- 56
 CREATE TABLE total_game_plays_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date_ datetime,
     total_sessions BIGINT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

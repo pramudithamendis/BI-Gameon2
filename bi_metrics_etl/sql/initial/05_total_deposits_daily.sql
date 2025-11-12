@@ -9,3 +9,5 @@ JOIN gaming_app_backend.user u ON w.user = u.id
 WHERE w.created_at >= @cutoff and (w.user_coin_transaction_method = 4 or w.user_coin_transaction_method = 5)
 GROUP BY DATE(w.created_at)
 ORDER BY DATE(w.created_at) DESC;
+
+select * from total_deposits_daily;  

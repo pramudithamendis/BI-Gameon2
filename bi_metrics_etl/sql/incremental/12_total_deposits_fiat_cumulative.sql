@@ -1,9 +1,23 @@
-SET @cutoff := '2025-09-27 18:30:00';
-insert into total_deposits_fiat_cumulative(total_completed_amount, total_transactions)
-SELECT 
-SUM(w.coins) AS total_completed_amount,
-COUNT(*) AS total_transactions
-FROM gaming_app_backend.user_coin_transaction w
-JOIN gaming_app_backend.user u ON w.user = u.id
-WHERE w.user_coin_transaction_method = 4
-and w.created_at >= @cutoff;
+USE gaming_app_bi;
+
+-- Get yesterday's date
+SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
+
+-- Get the cumulative total up to the day before yesterday
+SET @previous_total := COALESCE(
+    (SELECT total_completed_amount FROM total_deposits_fiat_cumulative WHERE date_ < @yesterday ORDER BY date_ DESC LIMIT 1),
+    0
+);
+
+-- Get yesterday's new user count
+SET @yesterday_count := COALESCE(
+    (SELECT total_completed_amount FROM total_deposits_fiat_daily WHERE date_ = @yesterday),
+    0
+);
+
+-- Insert or update the cumulative total for yesterday
+INSERT INTO total_deposits_fiat_cumulative (date_, total_completed_amount)
+VALUES (@yesterday, @previous_total + @yesterday_count)
+ON DUPLICATE KEY UPDATE 
+    total_completed_amount = @previous_total + @yesterday_count,
+    updated_at = CURRENT_TIMESTAMP;
