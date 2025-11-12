@@ -680,9 +680,11 @@ CREATE TABLE total_game_plays_monthly (
 -- 56
 CREATE TABLE total_game_plays_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    date_ datetime,
+    date_ DATE DEFAULT (CURRENT_DATE),
     total_sessions BIGINT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    	updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
 );
 
 -- 57
@@ -698,7 +700,8 @@ CREATE TABLE total_game_play_pool_amount_cumulative (
     date_ DATE NOT NULL,
     coin_bet_amount DECIMAL(18, 2) NOT NULL,
     total_sessions INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- 59
@@ -716,12 +719,14 @@ CREATE TABLE total_game_play_pool_amount_daily (
 -- 60
 CREATE TABLE total_game_play_comission_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date_ TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     summary_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     base_amount_100pct DECIMAL(18,2) NOT NULL,
     developer_share_50pct DECIMAL(18,2) NOT NULL,
     tax_18pct DECIMAL(18,2) NOT NULL,
     remainder_you_keep_32pct DECIMAL(18,2) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 );
 
 -- 61
