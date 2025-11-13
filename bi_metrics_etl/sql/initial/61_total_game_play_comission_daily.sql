@@ -12,4 +12,10 @@ LEFT JOIN gaming_app_backend.game_session gs           ON gs.id = COALESCE(ugs.g
 WHERE COALESCE(pc.is_active,1) = 1
   AND gs.created_at >= '2025-09-27'
 GROUP BY DATE(gs.created_at)
-ORDER BY DATE(gs.created_at) DESC;
+ORDER BY DATE(gs.created_at) DESC
+ON DUPLICATE KEY UPDATE 
+    base_amount_100pct=VALUES(base_amount_100pct),
+    developer_share_50pct=VALUES(developer_share_50pct),
+    tax_18pct=VALUES(tax_18pct),
+    remainder_you_keep_32pct=VALUES(remainder_you_keep_32pct),
+    updated_at = CURRENT_TIMESTAMP;

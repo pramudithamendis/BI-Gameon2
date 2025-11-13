@@ -721,14 +721,14 @@ CREATE TABLE total_game_play_pool_amount_daily (
 -- 60
 CREATE TABLE total_game_play_comission_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    date_ TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_ datetime,
     summary_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     base_amount_100pct DECIMAL(18,2) NOT NULL,
     developer_share_50pct DECIMAL(18,2) NOT NULL,
     tax_18pct DECIMAL(18,2) NOT NULL,
     remainder_you_keep_32pct DECIMAL(18,2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- 61
