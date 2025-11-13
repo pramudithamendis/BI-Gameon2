@@ -12,4 +12,8 @@ JOIN gaming_app_backend.game_coin_bet gcb
 WHERE DATE(gs.created_at) = '2025-10-19'
 and gs.created_at >= @cutoff
 GROUP BY DATE(gs.created_at), gcb.amount
-ORDER BY gcb.amount;
+ORDER BY gcb.amount
+ON DUPLICATE KEY UPDATE 
+    coin_bet_amount = VALUES(coin_bet_amount),
+    total_sessions = VALUES(total_sessions),
+    updated_at = CURRENT_TIMESTAMP;
