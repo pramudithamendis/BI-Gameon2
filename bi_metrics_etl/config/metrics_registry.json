@@ -69,7 +69,997 @@
           "05_total_deposits_daily.sql"
         ]
       }
+    },
+     "total_deposits_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits (weekly)",
+      "files": {
+        "initial": [
+          "06_total_deposits_weekly.sql"
+        ],
+        "incremental": [
+          "06_total_deposits_weekly.sql"
+        ]
+      }
+    },
+     "total_deposits_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits (monthly)",
+      "files": {
+        "initial": [
+          "07_total_deposits_monthly.sql"
+        ],
+        "incremental": [
+          "07_total_deposits_monthly.sql"
+        ]
+      }
+    },
+     "total_deposits_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits (cumulative)",
+      "files": {
+        "initial": [
+          "08_total_deposits_cumulative.sql"
+        ],
+        "incremental": [
+          "08_total_deposits_cumulative.sql"
+        ]
+      }
+    },
+     "total_deposits_fiat_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits fiat (daily)",
+      "files": {
+        "initial": [
+          "09_total_deposits_fiat_daily.sql"
+        ],
+        "incremental": [
+          "09_total_deposits_fiat_daily.sql"
+        ]
+      }
+    },
+     "total_deposits_fiat_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits fiat (weekly)",
+      "files": {
+        "initial": [
+          "10_total_deposits_fiat_weekly.sql"
+        ],
+        "incremental": [
+          "10_total_deposits_fiat_weekly.sql"
+        ]
+      }
+    },
+     "total_deposits_fiat_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits fiat (monthly)",
+      "files": {
+        "initial": [
+          "11_total_deposits_fiat_monthly.sql"
+        ],
+        "incremental": [
+          "11_total_deposits_fiat_monthly.sql"
+        ]
+      }
+    },
+     "total_deposits_fiat_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits fiat (cummulative)",
+      "files": {
+        "initial": [
+          "12_total_deposits_fiat_cumulative.sql"
+        ],
+        "incremental": [
+          "12_total_deposits_fiat_cumulative.sql"
+        ]
+      }
+    },
+    "total_deposits_crypto_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits crypto (daily)",
+      "files": {
+        "initial": [
+          "13_total_deposits_crypto_daily.sql"
+        ],
+        "incremental": [
+          "13_total_deposits_crypto_daily.sql"
+        ]
+      }
+    },
+      "total_deposits_crypto_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits crypto (weekly)",
+      "files": {
+        "initial": [
+          "14_total_deposits_crypto_weekly.sql"
+        ],
+        "incremental": [
+          "14_total_deposits_crypto_weekly.sql"
+        ]
+      }
+    },
+     "total_deposits_crypto_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits crypto (monthly)",
+      "files": {
+        "initial": [
+          "15_total_deposits_crypto_monthly.sql"
+        ],
+        "incremental": [
+          "15_total_deposits_crypto_monthly.sql"
+        ]
+      }
+    },
+    "total_deposits_crypto_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits crypto (cumulative)",
+      "files": {
+        "initial": [
+          "16_total_deposits_crypto_cumulative.sql"
+        ],
+        "incremental": [
+          "16_total_deposits_crypto_cumulative.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_fiat_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits userwise fiat (daily)",
+      "files": {
+        "initial": [
+          "17_total_deposits_userwise_fiat_daily.sql"
+        ],
+        "incremental": [
+          "17_total_deposits_userwise_fiat_daily.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_fiat_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits userwise fiat (weekly)",
+      "files": {
+        "initial": [
+          "18_total_deposits_userwise_fiat_weekly.sql"
+        ],
+        "incremental": [
+          "18_total_deposits_userwise_fiat_weekly.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_fiat_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits userwise fiat (monthly)",
+      "files": {
+        "initial": [
+          "19_total_deposits_userwise_fiat_monthly.sql"
+        ],
+        "incremental": [
+          "19_total_deposits_userwise_fiat_monthly.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_fiat_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "Total deposits userwise fiat (cumulative)",
+      "files": {
+        "initial": [
+          "20_total_deposits_userwise_fiat_cumulative.sql"
+        ],
+        "incremental": [
+          "20_total_deposits_userwise_fiat_cumulative.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_crypto_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise_crypto (daily)",
+      "files": {
+        "initial": [
+          "21_total_deposits_userwise_crypto_daily.sql"
+        ],
+        "incremental": [
+          "21_total_deposits_userwise_crypto_daily.sql"
+        ]
+      }
+    },
+      "total_deposits_userwise_crypto_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise_crypto (weekly)",
+      "files": {
+        "initial": [
+          "22_total_deposits_userwise_crypto_weekly.sql"
+        ],
+        "incremental": [
+          "22_total_deposits_userwise_crypto_weekly.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_crypto_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise_crypto (monthly)",
+      "files": {
+        "initial": [
+          "23_total_deposits_userwise_crypto_monthly.sql"
+        ],
+        "incremental": [
+          "23_total_deposits_userwise_crypto_monthly.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_crypto_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise_crypto (cumulative)",
+      "files": {
+        "initial": [
+          "24_total_deposits_userwise_crypto_cumulative.sql"
+        ],
+        "incremental": [
+          "24_total_deposits_userwise_crypto_cumulative.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise (daily)",
+      "files": {
+        "initial": [
+          "25_total_deposits_userwise_daily.sql"
+        ],
+        "incremental": [
+          "25_total_deposits_userwise_daily.sql"
+        ]
+      }
+    },
+     "total_deposits_userwise_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise (weekly)",
+      "files": {
+        "initial": [
+          "26_total_deposits_userwise_weekly.sql"
+        ],
+        "incremental": [
+          "26_total_deposits_userwise_weekly.sql"
+        ]
+      }
+    },
+      "total_deposits_userwise_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise (monthly)",
+      "files": {
+        "initial": [
+          "27_total_deposits_userwise_monthly.sql"
+        ],
+        "incremental": [
+          "27_total_deposits_userwise_monthly.sql"
+        ]
+      }
+    },
+      "total_deposits_userwise_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_deposits_userwise (cumulative)",
+      "files": {
+        "initial": [
+          "28_total_deposits_userwise_cumulative.sql"
+        ],
+        "incremental": [
+          "28_total_deposits_userwise_cumulative.sql"
+        ]
+      }
+    },
+
+     "total_withdrawal_fiat_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_fiat (daily)",
+      "files": {
+        "initial": [
+          "29_total_withdrawal_fiat_daily.sql"
+        ],
+        "incremental": [
+          "29_total_withdrawal_fiat_daily.sql"
+        ]
+      }
+    },
+     "total_withdrawal_fiat_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_fiat (weekly)",
+      "files": {
+        "initial": [
+          "30_total_withdrawal_fiat_weekly.sql"
+        ],
+        "incremental": [
+          "30_total_withdrawal_fiat_weekly.sql"
+        ]
+      }
+    },
+     "total_withdrawal_fiat_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_fiat (monthly)",
+      "files": {
+        "initial": [
+          "31_total_withdrawal_fiat_monthly.sql"
+        ],
+        "incremental": [
+          "31_total_withdrawal_fiat_monthly.sql"
+        ]
+      }
+    },
+     "total_withdrawal_fiat_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_fiat (cumulative)",
+      "files": {
+        "initial": [
+          "32_total_withdrawal_fiat_cumulative.sql"
+        ],
+        "incremental": [
+          "32_total_withdrawal_fiat_cumulative.sql"
+        ]
+      }
+    },
+     "total_withdrawal_crypto_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_crypto (daily)",
+      "files": {
+        "initial": [
+          "33_total_withdrawal_crypto_daily.sql"
+        ],
+        "incremental": [
+          "33_total_withdrawal_crypto_daily.sql"
+        ]
+      }
+    },
+     "total_withdrawal_crypto_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_crypto (weekly)",
+      "files": {
+        "initial": [
+          "34_total_withdrawal_crypto_weekly.sql"
+        ],
+        "incremental": [
+          "34_total_withdrawal_crypto_weekly.sql"
+        ]
+      }
+    },
+      "total_withdrawal_crypto_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_crypto (monthly)",
+      "files": {
+        "initial": [
+          "35_total_withdrawal_crypto_monthly.sql"
+        ],
+        "incremental": [
+          "35_total_withdrawal_crypto_monthly.sql"
+        ]
+      }
+    },
+     "total_withdrawal_crypto_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawal_crypto (cumulative)",
+      "files": {
+        "initial": [
+          "36_total_withdrawal_crypto_cumulative.sql"
+        ],
+        "incremental": [
+          "36_total_withdrawal_crypto_cumulative.sql"
+        ]
+      }
+    },
+     "total_withdrawals_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals (daily)",
+      "files": {
+        "initial": [
+          "37_total_withdrawals_daily.sql"
+        ],
+        "incremental": [
+          "37_total_withdrawals_daily.sql"
+        ]
+      }
+    },
+    "total_withdrawals_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals (weekly)",
+      "files": {
+        "initial": [
+          "38_total_withdrawals_weekly.sql"
+        ],
+        "incremental": [
+          "38_total_withdrawals_weekly.sql"
+        ]
+      }
+    },
+     "total_withdrawals_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals (monthly)",
+      "files": {
+        "initial": [
+          "39_total_withdrawals_monthly.sql"
+        ],
+        "incremental": [
+          "39_total_withdrawals_monthly.sql"
+        ]
+      }
+    },
+     "total_withdrawals_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals (cumulative)",
+      "files": {
+        "initial": [
+          "40_total_withdrawals_cumulative.sql"
+        ],
+        "incremental": [
+          "40_total_withdrawals_cumulative.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_fiat_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_fiat (daily)",
+      "files": {
+        "initial": [
+          "41_total_withdrawals_userwise_fiat_daily.sql"
+        ],
+        "incremental": [
+          "41_total_withdrawals_userwise_fiat_daily.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_fiat_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_fiat (weekly)",
+      "files": {
+        "initial": [
+          "42_total_withdrawals_userwise_fiat_weekly.sql"
+        ],
+        "incremental": [
+          "42_total_withdrawals_userwise_fiat_weekly.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_fiat_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_fiat (monthly)",
+      "files": {
+        "initial": [
+          "43_total_withdrawals_userwise_fiat_monthly.sql"
+        ],
+        "incremental": [
+          "43_total_withdrawals_userwise_fiat_monthly.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_fiat_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_fiat (cumulative)",
+      "files": {
+        "initial": [
+          "44_total_withdrawals_userwise_fiat_cumulative.sql"
+        ],
+        "incremental": [
+          "44_total_withdrawals_userwise_fiat_cumulative.sql"
+        ]
+      }
+    },
+
+     "total_withdrawals_userwise_crypto_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_crypto (daily)",
+      "files": {
+        "initial": [
+          "45_total_withdrawals_userwise_crypto_daily.sql"
+        ],
+        "incremental": [
+          "45_total_withdrawals_userwise_crypto_daily.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_crypto_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_crypto (weekly)",
+      "files": {
+        "initial": [
+          "46_total_withdrawals_userwise_crypto_weekly.sql"
+        ],
+        "incremental": [
+          "46_total_withdrawals_userwise_crypto_weekly.sql"
+        ]
+      }
+    },
+    "total_withdrawals_userwise_crypto_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_crypto (monthly)",
+      "files": {
+        "initial": [
+          "47_total_withdrawals_userwise_crypto_monthly.sql"
+        ],
+        "incremental": [
+          "47_total_withdrawals_userwise_crypto_monthly.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_crypto_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise_crypto (cumulative)",
+      "files": {
+        "initial": [
+          "48_total_withdrawals_userwise_crypto_cumulative.sql"
+        ],
+        "incremental": [
+          "48_total_withdrawals_userwise_crypto_cumulative.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise (daily)",
+      "files": {
+        "initial": [
+          "49_total_withdrawals_userwise_daily.sql"
+        ],
+        "incremental": [
+          "49_total_withdrawals_userwise_daily.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise (weekly)",
+      "files": {
+        "initial": [
+          "50_total_withdrawals_userwise_weekly.sql"
+        ],
+        "incremental": [
+          "50_total_withdrawals_userwise_weekly.sql"
+        ]
+      }
+    },
+     "total_withdrawals_userwise_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise (monthly)",
+      "files": {
+        "initial": [
+          "51_total_withdrawals_userwise_monthly.sql"
+        ],
+        "incremental": [
+          "51_total_withdrawals_userwise_monthly.sql"
+        ]
+      }
+    },
+
+     "total_withdrawals_userwise_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_withdrawals_userwise (cumulative)",
+      "files": {
+        "initial": [
+          "52_total_withdrawals_userwise_cumulative.sql"
+        ],
+        "incremental": [
+          "52_total_withdrawals_userwise_cumulative.sql"
+        ]
+      }
+    },
+
+     "total_game_plays_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_plays (daily)",
+      "files": {
+        "initial": [
+          "53_total_game_plays_daily.sql"
+        ],
+        "incremental": [
+          "53_total_game_plays_daily.sql"
+        ]
+      }
+    },
+     "total_game_plays_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_plays (weekly)",
+      "files": {
+        "initial": [
+          "54_total_game_plays_weekly.sql"
+        ],
+        "incremental": [
+          "54_total_game_plays_weekly.sql"
+        ]
+      }
+    },
+     "total_game_plays_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_plays (monthly)",
+      "files": {
+        "initial": [
+          "55_total_game_plays_monthly.sql"
+        ],
+        "incremental": [
+          "55_total_game_plays_monthly.sql"
+        ]
+      }
+    },
+     "total_game_plays_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_plays (cumulative)",
+      "files": {
+        "initial": [
+          "56_total_game_plays_cumulative.sql"
+        ],
+        "incremental": [
+          "56_total_game_plays_cumulative.sql"
+        ]
+      }
+    },
+
+     "total_game_playes_without_AI_and_Train_With_AI_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_playes_without_AI_and_Train_With_AI (cumulative)",
+      "files": {
+        "initial": [
+          "57_total_game_playes_without_AI_and_Train_With_AI_cumulative.sql"
+        ],
+        "incremental": [
+          "57_total_game_playes_without_AI_and_Train_With_AI_cumulative.sql"
+        ]
+      }
+    },
+      "total_game_play_pool_amount_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_play_pool_amount (cumulative)",
+      "files": {
+        "initial": [
+          "58_total_game_play_pool_amount_cumulative.sql"
+        ],
+        "incremental": [
+          "58_total_game_play_pool_amount_cumulative.sql"
+        ]
+      }
+    },
+
+     "total_game_play_pool_amount_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_play_pool_amount(daily)",
+      "files": {
+        "initial": [
+          "59_total_game_play_pool_amount_daily.sql"
+        ],
+        "incremental": [
+          "59_total_game_play_pool_amount_daily.sql"
+        ]
+      }
+    },
+
+      "total_game_play_comission_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_play_comission(cumulative)",
+      "files": {
+        "initial": [
+          "60_total_game_play_comission_cumulative.sql"
+        ],
+        "incremental": [
+          "60_total_game_play_comission_cumulative.sql"
+        ]
+      }
+    },
+
+     "total_game_play_comission_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_play_comission(daily)",
+      "files": {
+        "initial": [
+          "61_total_game_play_comission_daily.sql"
+        ],
+        "incremental": [
+          "61_total_game_play_comission_daily.sql"
+        ]
+      }
+    },
+      "total_game_play_comission_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_play_comission(weekly)",
+      "files": {
+        "initial": [
+          "62_total_game_play_comission_weekly.sql"
+        ],
+        "incremental": [
+          "62_total_game_play_comission_weekly.sql"
+        ]
+      }
+    },
+     "total_game_play_comission_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "total_game_play_comission(monthly)",
+      "files": {
+        "initial": [
+          "63_total_game_play_comission_monthly.sql"
+        ],
+        "incremental": [
+          "63_total_game_play_comission_monthly.sql"
+        ]
+      }
+    },
+
+     "0.2_AI_matches_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "0.2_AI_matches(cumulative)",
+      "files": {
+        "initial": [
+          "64_0.2_AI_matches_cumulative.sql"
+        ],
+        "incremental": [
+          "64_0.2_AI_matches_cumulative.sql"
+        ]
+      }
+    },
+     "0.2_AI_matches_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "0.2_AI_matches(daily)",
+      "files": {
+        "initial": [
+          "65_0.2_AI_matches_daily.sql"
+        ],
+        "incremental": [
+          "65_0.2_AI_matches_daily.sql"
+        ]
+      }
+    },
+     "0.2_AI_matches_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "0.2_AI_matches(weekly)",
+      "files": {
+        "initial": [
+          "66_0.2_AI_matches_weekly.sql"
+        ],
+        "incremental": [
+          "66_0.2_AI_matches_weekly.sql"
+        ]
+      }
+    },
+     "0.2_AI_matches_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "0.2_AI_matches(monthly)",
+      "files": {
+        "initial": [
+          "67_0.2_AI_matches_monthly.sql"
+        ],
+        "incremental": [
+          "67_0.2_AI_matches_monthly.sql"
+        ]
+      }
+    },
+    "old_AI_matches_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "old_AI_matches (cumulative)",
+      "files": {
+        "initial": [
+          "68_old_AI_matches_cumulative.sql"
+        ],
+        "incremental": [
+          "68_old_AI_matches_cumulative.sql"
+        ]
+      }
+    },
+     "old_AI_matches_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "old_AI_matches (daily)",
+      "files": {
+        "initial": [
+          "69_old_AI_matches_daily.sql"
+        ],
+        "incremental": [
+          "69_old_AI_matches_daily.sql"
+        ]
+      }
+    },
+     "old_AI_matches_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "old_AI_matches (weekly)",
+      "files": {
+        "initial": [
+          "70_old_AI_matches_weekly.sql"
+        ],
+        "incremental": [
+          "70_old_AI_matches_weekly.sql"
+        ]
+      }
+    },
+     "old_AI_matches_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "old_AI_matches (monthly)",
+      "files": {
+        "initial": [
+          "71_old_AI_matches_monthly.sql"
+        ],
+        "incremental": [
+          "71_old_AI_matches_monthly.sql"
+        ]
+      }
+    },
+      "wallet_balance_cumulative": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "wallet_balance (cumulative)",
+      "files": {
+        "initial": [
+          "72_wallet_balance_cumulative.sql"
+        ],
+        "incremental": [
+          "72_wallet_balance_cumulative.sql"
+        ]
+      }
+    },
+     "wallet_balance_daily": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "wallet_balance (daily)",
+      "files": {
+        "initial": [
+          "73_wallet_balance_daily.sql"
+        ],
+        "incremental": [
+          "73_wallet_balance_daily.sql"
+        ]
+      }
+    },
+     "wallet_balance_weekly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "wallet_balance (weekly)",
+      "files": {
+        "initial": [
+          "74_wallet_balance_weekly.sql"
+        ],
+        "incremental": [
+          "74_wallet_balance_weekly.sql"
+        ]
+      }
+    },
+     "wallet_balance_monthly": {
+      "enabled": true,
+      "initialized": false,
+      "initial_load_date": "",
+      "description": "wallet_balance (monthly)",
+      "files": {
+        "initial": [
+          "75_wallet_balance_monthly.sql"
+        ],
+        "incremental": [
+          "75_wallet_balance_monthly.sql"
+        ]
+      }
     }
+    
   },
   "last_updated": "2025-11-11T10:39:11.892783"
 }
