@@ -690,11 +690,21 @@ CREATE TABLE total_game_plays_cumulative (
 );
 
 -- 57
-CREATE TABLE total_game_plays_without_AI_and Train_With_AI_cumulative (
+CREATE TABLE total_game_plays_without_AI_and_Train_With_AI_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     total_sessions INT NOT NULL DEFAULT 0,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 57 extra
+CREATE TABLE total_game_plays_without_AI_and_Train_With_AI_daily (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    session_date datetime,
+    total_sessions INT NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
 
 -- 58
 CREATE TABLE total_game_play_pool_amount_cumulative (
@@ -895,10 +905,12 @@ CREATE TABLE wallet_balance_cumulative(
     email VARCHAR(255) NOT NULL,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
+    date_ datetime,
     total_balance BIGINT NOT NULL DEFAULT 0,
     total_hold BIGINT NOT NULL DEFAULT 0,
     available_balance BIGINT NOT NULL DEFAULT 0,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 

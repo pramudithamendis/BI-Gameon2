@@ -24,4 +24,9 @@ GROUP BY
    date_
 ORDER BY 
     date_ DESC,
-    available_balance DESC;
+    available_balance DESC
+ON DUPLICATE KEY UPDATE 
+    total_balance = VALUES(total_balance),
+    total_hold = VALUES(total_hold),
+    available_balance = VALUES(available_balance),
+    updated_at = CURRENT_TIMESTAMP;
