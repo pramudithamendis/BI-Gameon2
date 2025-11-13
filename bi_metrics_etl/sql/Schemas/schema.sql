@@ -692,8 +692,11 @@ CREATE TABLE total_game_plays_cumulative (
 -- 57
 CREATE TABLE total_game_plays_without_AI_and_Train_With_AI_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date_ datetime,
     total_sessions INT NOT NULL DEFAULT 0,
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
 );
 
 -- 57 extra
