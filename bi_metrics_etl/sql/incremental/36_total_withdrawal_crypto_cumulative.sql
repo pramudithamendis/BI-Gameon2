@@ -62,4 +62,6 @@ FROM total_withdrawal_crypto_cumulative
 WHERE date_ >= DATE_SUB(@yesterday, INTERVAL 2 DAY)
 ORDER BY date_;
 
+select * from total_withdrawal_crypto_cumulative;
+select * from total_withdrawal_crypto_daily;
 --checked

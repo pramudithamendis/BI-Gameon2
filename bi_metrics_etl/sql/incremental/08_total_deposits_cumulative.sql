@@ -96,4 +96,6 @@ WHERE date_ >= DATE_SUB(@yesterday, INTERVAL 2 DAY)
 ORDER BY date_;
 
 
+select * from total_deposits_cumulative;
+select * from total_deposits_daily;
 ---checked
