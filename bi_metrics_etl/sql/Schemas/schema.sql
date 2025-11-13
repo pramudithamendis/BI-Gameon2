@@ -582,7 +582,7 @@ CREATE TABLE total_withdrawals_userwise_crypto_monthly (
 -- 48
 CREATE TABLE total_withdrawals_userwise_crypto_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT NOT NULL unique,
+    user_id BIGINT NOT NULL,
     email VARCHAR(255) NOT NULL,
     first_name VARCHAR(150),
     last_name VARCHAR(150),
