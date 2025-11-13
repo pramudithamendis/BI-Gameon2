@@ -838,11 +838,13 @@ CREATE TABLE 02_AI_matches_monthly (
 -- 68
 CREATE TABLE old_AI_matches_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date_ datetime,
     total_ai_matches INT NOT NULL DEFAULT 0,
     total_player_wins INT NOT NULL DEFAULT 0,
     total_player_losses INT NOT NULL DEFAULT 0,
     total_spent_in_usd DECIMAL(10,2) NOT NULL DEFAULT 0.00,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- 69

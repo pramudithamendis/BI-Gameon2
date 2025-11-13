@@ -18,4 +18,12 @@ WHERE
 GROUP BY 
     match_date
 ORDER BY 
-    match_date ASC;
+    match_date ASC
+ON DUPLICATE KEY UPDATE 
+    total_ai_matches = VALUES(total_ai_matches),
+    total_player_wins = VALUES(total_player_wins),
+    total_player_losses = VALUES(total_player_losses),
+    total_spent_in_usd = VALUES(total_spent_in_usd),
+    updated_at = CURRENT_TIMESTAMP;
+    
+select * from old_AI_matches_daily ;
