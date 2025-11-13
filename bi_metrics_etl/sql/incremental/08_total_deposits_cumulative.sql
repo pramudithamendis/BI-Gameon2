@@ -97,5 +97,5 @@ ORDER BY date_;
 
 
 select * from total_deposits_cumulative;
-select * from total_deposits_daily;
+select * from total_deposits_cumulative;
 ---checked

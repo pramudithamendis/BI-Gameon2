@@ -8,4 +8,8 @@ FROM gaming_app_backend.user_coin_transaction w
 JOIN gaming_app_backend.user u ON w.user = u.id
 WHERE w.created_at >= @cutoff and (w.user_coin_transaction_method = 3 or w.user_coin_transaction_method = 9)
 GROUP BY DATE(w.created_at)
-ORDER BY DATE(w.created_at) DESC;
+ORDER BY DATE(w.created_at) DESC
+ON DUPLICATE KEY UPDATE 
+    total_completed_amount = VALUES(total_completed_amount),
+    total_transactions = VALUES(total_transactions),
+    updated_at = CURRENT_TIMESTAMP;
