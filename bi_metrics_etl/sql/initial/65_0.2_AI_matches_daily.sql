@@ -1,4 +1,4 @@
-insert into 0.2_AI_matches_daily (
+insert into 02_AI_matches_daily (
     date_, player_name, player_email, total_ai_matches, player_wins, player_losses, spend_amount_usd
 )
 SELECT 
@@ -26,4 +26,10 @@ GROUP BY
     u_player.id
 ORDER BY 
     date_ DESC,
-    spend_amount_usd DESC;
+    spend_amount_usd DESC
+ON DUPLICATE KEY UPDATE 
+    total_ai_matches = VALUES(total_ai_matches),
+    player_wins = VALUES(player_wins),
+    player_losses = VALUES(player_losses),
+    spend_amount_usd = VALUES(spend_amount_usd),
+    updated_at = CURRENT_TIMESTAMP;

@@ -25,6 +25,3 @@ VALUES (@yesterday, @previous_total + @yesterday_count)
 ON DUPLICATE KEY UPDATE 
     total_sessions = @previous_total + @yesterday_count,
     updated_at = CURRENT_TIMESTAMP;
-
-select * from total_game_plays_cumulative;
-select * from total_game_plays_daily;

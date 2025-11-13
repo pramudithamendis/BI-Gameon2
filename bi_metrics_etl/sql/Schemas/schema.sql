@@ -774,20 +774,22 @@ CREATE TABLE total_game_play_comission_weekly (
 );
 
 -- 64
-CREATE TABLE 0.2_AI_matches_cumulative (
+CREATE TABLE 02_AI_matches_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date_ datetime,
     player_name VARCHAR(255),
-    player_email VARCHAR(255) NOT NULL,
+    player_email VARCHAR(255),
     total_ai_matches INT NOT NULL DEFAULT 0,
     player_wins INT NOT NULL DEFAULT 0,
     player_losses INT NOT NULL DEFAULT 0,
     spend_amount_usd DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     report_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- 65
-CREATE TABLE 0.2_AI_matches_daily (
+CREATE TABLE 02_AI_matches_daily (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date_ DATE NOT NULL,
     player_name VARCHAR(150),
@@ -802,7 +804,7 @@ CREATE TABLE 0.2_AI_matches_daily (
 );
 
 -- 66
-CREATE TABLE 0.2_AI_matches_weekly (
+CREATE TABLE 02_AI_matches_weekly (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     week_label VARCHAR(10) NOT NULL ,        -- e.g. 2025-W05
     player_name VARCHAR(255),
@@ -818,7 +820,7 @@ CREATE TABLE 0.2_AI_matches_weekly (
 
 
 -- 67
-CREATE TABLE 0.2_AI_matches_monthly (
+CREATE TABLE 02_AI_matches_monthly (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     month_ VARCHAR(7) NOT NULL,                              -- Format: YYYY-MM
     player_id BIGINT NOT NULL,                              -- Reference to user table

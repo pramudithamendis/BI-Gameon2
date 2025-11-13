@@ -1,28 +1,15 @@
-INSERT INTO 0.2_AI_matches_cumulative (
-    player_name, player_email, total_ai_matches, player_wins,
+INSERT INTO 02_AI_matches_cumulative (
+date_,
+    player_email, total_ai_matches, player_wins,
     player_losses, spend_amount_usd
 )
 SELECT 
-    CONCAT(u_player.first_name, ' ', u_player.last_name) AS player_name,
-    u_player.email AS player_email,
-   COUNT(*) AS total_ai_matches,
-   SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END) AS player_wins,
-    SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 THEN 1 ELSE 0 END) AS player_losses,
-    ROUND(SUM(CASE WHEN ugo.is_game_won = 0 AND ugo.is_game_finished = 1 THEN 0.20 ELSE 0 END), 2) AS spend_amount_usd
-FROM gaming_app_backend.game_session gs
-JOIN gaming_app_backend.user_game_session ugp 
-    ON ugp.game_session = gs.id
-JOIN gaming_app_backend.user u_player 
-    ON u_player.id = ugp.user
-JOIN gaming_app_backend.user_game_session ugo 
-    ON ugo.game_session = gs.id AND ugo.user <> ugp.user
-JOIN gaming_app_backend.user u_opponent 
-    ON u_opponent.id = ugo.user
-WHERE 
-    gs.created_at >= '2025-10-15'
-    AND u_player.id NOT IN (1109,1110,1111,1112,1113,1164,1165,1166,1167,1168,1169)   
-    AND u_opponent.id IN (1109,1110,1111,1112,1113,1164,1165,1166,1167,1168,1169)     
-GROUP BY 
-    u_player.id
-ORDER BY 
-    spend_amount_usd DESC;
+d.date_,
+    d.player_email AS player_email,
+   COUNT(*) OVER (ORDER BY d.date_) AS total_ai_matches,
+   SUM(d.player_wins) OVER (ORDER BY d.date_) AS player_wins,
+    SUM(d.player_losses) OVER (ORDER BY d.date_) AS player_losses,
+    SUM(d.spend_amount_usd) OVER (ORDER BY d.date_) AS spend_amount_usd
+FROM 02_AI_matches_daily d
+ORDER BY d.date_;
+select * from 02_AI_matches_cumulative;
