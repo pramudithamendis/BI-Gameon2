@@ -1,9 +1,11 @@
-SET @cutoff := '2025-09-27 18:30:00'; 
-insert into total_withdrawals_userwise_fiat_cumulative(user_id,email,first_name,last_name,total_completed_amount,total_transactions) 
-SELECT w.user AS user_id, u.email, u.first_name, u.last_name, SUM(w.coins) AS total_completed_amount, COUNT(*) AS total_transactions 
-	FROM gaming_app_backend.user_coin_transaction w
 
-JOIN gaming_app_backend.user u ON w.user = u.id 
-WHERE w.user_coin_transaction_method = 3 and w.created_at >= @cutoff 
-GROUP BY w.user, u.email, u.first_name, u.last_name 
-ORDER BY total_completed_amount DESC;
+
+SET @cutoff := '2025-09-27 18:30:00'; 
+insert into total_withdrawals_userwise_fiat_cumulative(date_,user_id,email,first_name,last_name,total_completed_amount,total_transactions) 
+SELECT d.date_,d.user_id AS user_id, d.email, d.first_name, d.last_name, 
+    SUM(d.total_completed_amount) OVER (ORDER BY d.date_) AS total_completed_amount,
+    SUM(d.total_transactions) OVER (ORDER BY d.date_) AS total_transactions
+FROM total_withdrawals_userwise_fiat_daily d
+ORDER BY d.date_;
+
+select * from total_withdrawals_userwise_fiat_cumulative

@@ -16,4 +16,8 @@ GROUP BY w.user,
     u.first_name,
     u.last_name,
     DATE(w.created_at) ORDER BY date DESC,
-    total_completed_amount DESC;
+    total_completed_amount DESC
+ON DUPLICATE KEY UPDATE 
+    total_completed_amount = VALUES(total_completed_amount),
+    total_transactions = VALUES(total_transactions),
+    updated_at = CURRENT_TIMESTAMP;

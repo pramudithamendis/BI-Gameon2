@@ -521,7 +521,8 @@ CREATE TABLE total_withdrawals_userwise_fiat_monthly (
 -- 44
 CREATE TABLE total_withdrawals_userwise_fiat_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT NOT NULL unique,
+    date_ datetime,
+    user_id BIGINT NOT NULL,
     email VARCHAR(255) NOT NULL,
     first_name VARCHAR(150),
     last_name VARCHAR(150),
