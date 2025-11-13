@@ -119,4 +119,5 @@ ON DUPLICATE KEY UPDATE
 -- View tables
 --------------------------------------------------------------------------------
 SELECT * FROM `old_AI_matches_cumulative` ORDER BY date_ DESC;
-SELECT * FROM `old_AI_matches_daily` ORDER BY date_ DESC;
+
+--checked
