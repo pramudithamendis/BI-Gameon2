@@ -28,7 +28,7 @@ JOIN gaming_app_backend.user u
 WHERE 
     w.user_coin_transaction_method = 9
     AND w.is_active = 1
-    AND u.email NOT LIKE '%@gameonworld.ai%'   -- exclude internal/test users
+    AND u.email NOT LIKE '%%@gameonworld.ai%%'   -- exclude internal/test users
     AND w.created_at >= %%cutoff
 GROUP BY date_
 ON DUPLICATE KEY UPDATE 

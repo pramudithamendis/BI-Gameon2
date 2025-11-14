@@ -28,7 +28,7 @@ JOIN gaming_app_backend.user u
 WHERE 
     w.is_active = 1
     AND w.status = 'Approved'                           -- ✅ only approved withdrawals
-    AND u.email NOT LIKE '%@gameonworld.ai%'            -- exclude internal/test users
+    AND u.email NOT LIKE '%%@gameonworld.ai%%'            -- exclude internal/test users
     AND w.amount_lkr IS NOT NULL
     AND w.created_at >= %%cutoff
 GROUP BY date_
