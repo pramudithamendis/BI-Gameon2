@@ -3,10 +3,32 @@ USE gaming_app_bi;
 -- Get yesterday's date (converted to +08:00)
 SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
 
+SELECT 
+    tt.tam,
+    tt.pw,
+    tt.pl,
+    tt.sau
+INTO 
+    @tam,
+    @pw,
+    @pl,
+    @sau
+from
+(select distinct(t.date__) as d,t.total_ai_matches tam,t.player_wins pw,t.player_losses pl,t.spend_amount_usd sau from
+(SELECT 
+d.date_ as date__,
+   COUNT(*) OVER (ORDER BY d.date_) AS total_ai_matches,
+   SUM(d.player_wins) OVER (ORDER BY d.date_) AS player_wins,
+    SUM(d.player_losses) OVER (ORDER BY d.date_) AS player_losses,
+    SUM(d.spend_amount_usd) OVER (ORDER BY d.date_) AS spend_amount_usd
+FROM 02_AI_matches_daily d
+ORDER BY d.date_) as t) as tt
+where tt.d = @yesterday;
+
+
 --------------------------------------------------------------------------------
 -- Helper: A safe subquery wrapper to force only 1 row
 --------------------------------------------------------------------------------
-
 -- Previous total_ai_matches
 SET @previous_total_ai_matches := COALESCE(
     (SELECT total_ai_matches 
@@ -16,6 +38,7 @@ SET @previous_total_ai_matches := COALESCE(
      LIMIT 1),
     0
 );
+-- select @previous_total_ai_matches;
 
 -- Yesterday total_ai_matches
 SET @yesterday_total_ai_matches := COALESCE(
@@ -26,7 +49,7 @@ SET @yesterday_total_ai_matches := COALESCE(
      LIMIT 1),
     0
 );
-
+-- select @yesterday_total_ai_matches;
 
 --------------------------------------------------------------------------------
 -- player_wins
@@ -39,6 +62,7 @@ SET @previous_player_wins := COALESCE(
      LIMIT 1),
     0
 );
+-- select @previous_player_wins;
 
 SET @yesterday_player_wins := COALESCE(
     (SELECT player_wins 
@@ -48,7 +72,7 @@ SET @yesterday_player_wins := COALESCE(
      LIMIT 1),
     0
 );
-
+-- select @yesterday_player_wins;
 
 --------------------------------------------------------------------------------
 -- player_losses
@@ -61,7 +85,7 @@ SET @previous_player_losses := COALESCE(
      LIMIT 1),
     0
 );
-
+-- select @previous_player_losses;
 SET @yesterday_player_losses := COALESCE(
     (SELECT player_losses 
      FROM `02_AI_matches_daily`
@@ -70,7 +94,7 @@ SET @yesterday_player_losses := COALESCE(
      LIMIT 1),
     0
 );
-
+-- select @yesterday_player_losses;
 
 --------------------------------------------------------------------------------
 -- spend_amount_usd
@@ -83,7 +107,7 @@ SET @previous_spend_amount_usd := COALESCE(
      LIMIT 1),
     0
 );
-
+-- select @previous_spend_amount_usd;
 SET @yesterday_spend_amount_usd := COALESCE(
     (SELECT spend_amount_usd 
      FROM `02_AI_matches_daily`
@@ -92,21 +116,22 @@ SET @yesterday_spend_amount_usd := COALESCE(
      LIMIT 1),
     0
 );
-
+-- select @yesterday_spend_amount_usd;
 
 --------------------------------------------------------------------------------
 -- Insert cumulative
 --------------------------------------------------------------------------------
+   
+    
 INSERT INTO `02_AI_matches_cumulative`
-    (date_,player_email, total_ai_matches, player_wins, player_losses, spend_amount_usd)
+    (date_,total_ai_matches, player_wins, player_losses, spend_amount_usd)
 VALUES
     (
         @yesterday,
-        null,
-        @previous_total_ai_matches + @yesterday_total_ai_matches,
-        @previous_player_wins + @yesterday_player_wins,
-        @previous_player_losses + @yesterday_player_losses,
-        @previous_spend_amount_usd + @yesterday_spend_amount_usd
+        @tam,
+         @pw,
+       @pl,
+         @sau
     )
 ON DUPLICATE KEY UPDATE
     total_ai_matches = VALUES(total_ai_matches),

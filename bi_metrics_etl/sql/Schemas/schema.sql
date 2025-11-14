@@ -692,7 +692,7 @@ CREATE TABLE total_game_plays_cumulative (
 -- 57
 CREATE TABLE total_game_plays_without_AI_and_Train_With_AI_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    date_ datetime,
+    date_ datetime unique,
     total_sessions INT NOT NULL DEFAULT 0,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -734,7 +734,7 @@ CREATE TABLE total_game_play_pool_amount_daily (
 -- 60
 CREATE TABLE total_game_play_comission_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    date_ datetime,
+    date_ datetime unique,
     summary_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     base_amount_100pct DECIMAL(18,2) NOT NULL,
     developer_share_50pct DECIMAL(18,2) NOT NULL,
@@ -789,16 +789,16 @@ CREATE TABLE total_game_play_comission_weekly (
 -- 64
 CREATE TABLE 02_AI_matches_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    date_ datetime,
-    player_name VARCHAR(255),
-    player_email VARCHAR(255),
+    date_ datetime unique,
+    -- player_name VARCHAR(255),
+    -- player_email VARCHAR(255),
     total_ai_matches INT NOT NULL DEFAULT 0,
     player_wins INT NOT NULL DEFAULT 0,
     player_losses INT NOT NULL DEFAULT 0,
     spend_amount_usd DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     report_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- 65
