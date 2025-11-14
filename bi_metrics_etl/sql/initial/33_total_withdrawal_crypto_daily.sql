@@ -14,7 +14,7 @@
 USE gaming_app_bi;
 
 -- Set cutoff datetime
-SET %%cutoff := '2025-09-27 18:30:00';
+SET @cutoff := '2025-09-27 18:30:00';
 
 -- Insert or update daily totals for all crypto withdrawals (Singapore timezone)
 INSERT INTO total_withdrawal_crypto_daily (date_, total_completed_amount, total_transactions)
@@ -29,7 +29,7 @@ WHERE
     w.user_coin_transaction_method = 9
     AND w.is_active = 1
     AND u.email NOT LIKE '%%@gameonworld.ai%%'   -- exclude internal/test users
-    AND w.created_at >= %%cutoff
+    AND w.created_at >= @cutoff
 GROUP BY date_
 ON DUPLICATE KEY UPDATE 
     total_completed_amount = VALUES(total_completed_amount),

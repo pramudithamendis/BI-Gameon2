@@ -14,7 +14,7 @@
 USE gaming_app_bi;
 
 -- Set cutoff datetime
-SET %%cutoff := '2025-09-27 18:30:00';
+SET @cutoff := '2025-09-27 18:30:00';
 
 -- Insert or update daily totals for approved fiat withdrawals (Singapore timezone)
 INSERT INTO total_withdrawal_fiat_daily (date_, total_completed_amount, total_transactions)
@@ -30,7 +30,7 @@ WHERE
     AND w.status = 'Approved'                           -- ✅ only approved withdrawals
     AND u.email NOT LIKE '%%@gameonworld.ai%%'            -- exclude internal/test users
     AND w.amount_lkr IS NOT NULL
-    AND w.created_at >= %%cutoff
+    AND w.created_at >= @cutoff
 GROUP BY date_
 ON DUPLICATE KEY UPDATE 
     total_completed_amount = VALUES(total_completed_amount),
