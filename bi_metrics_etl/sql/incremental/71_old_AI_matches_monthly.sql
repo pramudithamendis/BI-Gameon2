@@ -10,7 +10,7 @@ INSERT INTO old_AI_matches_monthly(
 SELECT 
     @prev_month_year AS year_,
     @prev_month_num AS month_number,
-    DATE_FORMAT(MIN(gs.created_at), '%M') AS month_name,
+    DATE_FORMAT(MIN(gs.created_at), '%%M') AS month_name,
     COUNT(*) AS total_ai_matches,
     SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END) AS total_player_wins,
     SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 THEN 1 ELSE 0 END) AS total_player_losses,

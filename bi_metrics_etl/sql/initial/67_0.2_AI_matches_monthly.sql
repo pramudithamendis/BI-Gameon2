@@ -5,7 +5,7 @@ INSERT INTO 0.2_AI_matches_monthly
     total_ai_matches, player_wins, player_losses, spend_amount_usd
 )
 SELECT 
-    DATE_FORMAT(gs.created_at, '%Y-%m') AS month_, 
+    DATE_FORMAT(gs.created_at, '%%Y-%%m') AS month_, 
     u_player.id AS player_id,
     CONCAT(u_player.first_name, ' ', u_player.last_name) AS player_name,
     u_player.email AS player_email,

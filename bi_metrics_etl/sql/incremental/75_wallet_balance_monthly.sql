@@ -1,6 +1,6 @@
 
 -- Get last month (Singapore timezone)
-SET @last_month := DATE_FORMAT(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+00:00', '+08:00'), '%Y-%m');
+SET @last_month := DATE_FORMAT(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+00:00', '+08:00'), '%%Y-%%m');
 
 INSERT INTO wallet_balance_monthly (user_id, email, first_name, last_name, month_, total_balance, total_hold, available_balance)
 SELECT 
@@ -17,7 +17,7 @@ LEFT JOIN gaming_app_backend.user_coin_action uca
     ON uca.user = u.id
    AND uca.user_coin_action_type = 1    
    AND uca.is_active = 1
-   AND DATE_FORMAT(CONVERT_TZ(uca.created_at, '+00:00', '+08:00'), '%Y-%m') = @last_month
+   AND DATE_FORMAT(CONVERT_TZ(uca.created_at, '+00:00', '+08:00'), '%%Y-%%m') = @last_month
 WHERE u.is_active = 1
 GROUP BY 
     u.id, u.email, u.first_name, u.last_name, u.total_coins

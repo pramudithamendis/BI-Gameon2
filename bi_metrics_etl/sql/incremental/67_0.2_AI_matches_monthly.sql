@@ -1,6 +1,6 @@
 
 -- Get last month in Singapore timezone (YYYY-MM)
-SET @last_month := DATE_FORMAT(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+00:00', '+08:00'), '%Y-%m');
+SET @last_month := DATE_FORMAT(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+00:00', '+08:00'), '%%Y-%%m');
 
 INSERT INTO 0.2_AI_matches_monthly
 (
@@ -8,7 +8,7 @@ INSERT INTO 0.2_AI_matches_monthly
     total_ai_matches, player_wins, player_losses, spend_amount_usd, updated_at
 )
 SELECT 
-    DATE_FORMAT(CONVERT_TZ(gs.created_at, '+00:00', '+08:00'), '%Y-%m') AS month_, 
+    DATE_FORMAT(CONVERT_TZ(gs.created_at, '+00:00', '+08:00'), '%%Y-%%m') AS month_, 
     u_player.id AS player_id,
     CONCAT(u_player.first_name, ' ', u_player.last_name) AS player_name,
     u_player.email AS player_email,
@@ -27,7 +27,7 @@ JOIN gaming_app_backend.user_game_session ugo
 JOIN gaming_app_backend.user u_opponent 
     ON u_opponent.id = ugo.user
 WHERE 
-    DATE_FORMAT(CONVERT_TZ(gs.created_at, '+00:00', '+08:00'), '%Y-%m') = @last_month
+    DATE_FORMAT(CONVERT_TZ(gs.created_at, '+00:00', '+08:00'), '%%Y-%%m') = @last_month
     AND u_player.id NOT IN (1109,1110,1111,1112,1113)
     AND u_opponent.id IN (1109,1110,1111,1112,1113)
 GROUP BY 

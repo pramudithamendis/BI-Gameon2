@@ -4,7 +4,7 @@ SET @cutoff := '2025-08-26 18:30:00';
 
 INSERT INTO total_users_monthly (month, value)
 SELECT 
-    DATE_FORMAT(CONVERT_TZ(u.created_at, '+00:00', '+08:00'), '%Y-%m') AS month,
+    DATE_FORMAT(CONVERT_TZ(u.created_at, '+00:00', '+08:00'), '%%Y-%%m') AS month,
     COUNT(*) AS value
 FROM gaming_app_backend.`user` u
 WHERE u.created_at >= @cutoff

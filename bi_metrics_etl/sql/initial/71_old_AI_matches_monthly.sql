@@ -3,7 +3,7 @@ insert into old_AI_matches_monthly(year_, month_number, month_name, total_ai_mat
 SELECT 
     YEAR(gs.created_at) AS year_,
     MONTH(gs.created_at) AS month_number,
-    DATE_FORMAT(MIN(gs.created_at), '%M') AS month_name,  
+    DATE_FORMAT(MIN(gs.created_at), '%%M') AS month_name,  
     COUNT(*) AS total_ai_matches,
     SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END) AS total_player_wins,
     SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 THEN 1 ELSE 0 END) AS total_player_losses,

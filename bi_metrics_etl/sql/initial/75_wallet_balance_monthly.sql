@@ -5,7 +5,7 @@ SELECT
     u.email as email,
     u.first_name as first_name,
     u.last_name as last_name,
-    DATE_FORMAT(uca.created_at, '%Y-%m') AS month_,  
+    DATE_FORMAT(uca.created_at, '%%Y-%%m') AS month_,  
     u.total_coins AS total_balance,
     IFNULL(SUM(uca.coins), 0) AS total_hold,
     (u.total_coins - IFNULL(SUM(uca.coins), 0)) AS available_balance
@@ -21,7 +21,7 @@ GROUP BY
     u.first_name, 
     u.last_name,
     u.total_coins,
-    DATE_FORMAT(uca.created_at, '%Y-%m')
+    DATE_FORMAT(uca.created_at, '%%Y-%%m')
 ORDER BY 
     month_ DESC,
     available_balance DESC;

@@ -4,7 +4,7 @@ SET @last_week := YEARWEEK(DATE_SUB(CURDATE(), INTERVAL 1 WEEK), 1);
 
 -- Calculate week start + week end for last week (Singapore time +08:00)
 SET @week_start := DATE_SUB(
-    DATE_FORMAT(CONVERT_TZ(CURDATE(), '+00:00', '+08:00'), '%Y-%m-%d'),
+    DATE_FORMAT(CONVERT_TZ(CURDATE(), '+00:00', '+08:00'), '%%Y-%%m-%%d'),
     INTERVAL (WEEKDAY(CONVERT_TZ(CURDATE(), '+00:00', '+08:00')) + 7) DAY
 );
 SET @week_end := DATE_ADD(@week_start, INTERVAL 6 DAY);
