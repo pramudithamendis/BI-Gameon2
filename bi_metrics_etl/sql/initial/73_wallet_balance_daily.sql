@@ -1,4 +1,4 @@
-
+SET @cutoff := '2025-09-27 18:30:00'; 
 insert into wallet_balance_daily(user_id,email,first_name,last_name,date_,total_balance,total_hold,available_balance)
 SELECT 
     u.id AS user_id,
@@ -14,7 +14,7 @@ LEFT JOIN gaming_app_backend.user_coin_action uca
     ON uca.user = u.id
    AND uca.user_coin_action_type = 1   
    AND uca.is_active = 1
-WHERE u.is_active = 1
+WHERE u.is_active = 1 and DATE(uca.created_at) >= @cutoff
 GROUP BY 
     u.id,
     u.email,

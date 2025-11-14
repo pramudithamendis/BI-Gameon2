@@ -702,7 +702,7 @@ CREATE TABLE total_game_plays_without_AI_and_Train_With_AI_cumulative (
 -- 57 extra
 CREATE TABLE total_game_plays_without_AI_and_Train_With_AI_daily (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    session_date datetime,
+    session_date datetime unique,
     total_sessions INT NOT NULL DEFAULT 0,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -913,8 +913,10 @@ CREATE TABLE wallet_balance_cumulative(
     total_hold BIGINT NOT NULL DEFAULT 0,
     available_balance BIGINT NOT NULL DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    unique key uq_user_date (id, date_)
 );
+
 
 
 -- 73
