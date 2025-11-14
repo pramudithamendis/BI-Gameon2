@@ -2,7 +2,7 @@
 -- Get last month in Singapore timezone (YYYY-MM)
 SET @last_month := DATE_FORMAT(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+00:00', '+08:00'), '%%Y-%%m');
 
-INSERT INTO 0.2_AI_matches_monthly
+INSERT INTO 02_AI_matches_monthly
 (
     month_, player_id, player_name, player_email,
     total_ai_matches, player_wins, player_losses, spend_amount_usd, updated_at

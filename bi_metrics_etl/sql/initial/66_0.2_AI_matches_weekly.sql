@@ -1,5 +1,5 @@
 
-insert into 0.2_AI_matches_weekly(
+insert into 02_AI_matches_weekly(
     week_label, player_name, player_email,
     total_ai_matches, player_wins, player_losses, spend_amount_usd
 )

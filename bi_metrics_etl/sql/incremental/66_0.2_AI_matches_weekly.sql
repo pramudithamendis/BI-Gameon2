@@ -6,7 +6,7 @@ SET @last_week_label := CONCAT(
     LPAD(WEEK(DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 WEEK), '+00:00', '+08:00')), 1), 2, '0')
 );
 
-INSERT INTO 0.2_AI_matches_weekly(
+INSERT INTO 02_AI_matches_weekly(
     week_label, 
     player_name, 
     player_email,
