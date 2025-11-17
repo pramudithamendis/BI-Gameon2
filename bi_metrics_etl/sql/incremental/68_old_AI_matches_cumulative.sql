@@ -102,4 +102,3 @@ ON DUPLICATE KEY UPDATE
 
 SELECT * FROM `old_AI_matches_cumulative` ORDER BY date_ DESC;
 
---checked

@@ -5,7 +5,7 @@ SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+0
 
 -- Get the cumulative total up to the day before yesterday
 SET @previous_total := COALESCE(
-    (SELECT value FROM total_users  _cumulative WHERE date < @yesterday ORDER BY date DESC LIMIT 1),
+    (SELECT value FROM total_users_cumulative WHERE date < @yesterday ORDER BY date DESC LIMIT 1),
     0
 );
 

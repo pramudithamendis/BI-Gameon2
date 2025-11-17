@@ -721,7 +721,8 @@ CREATE TABLE total_game_play_pool_amount_cumulative (
     coin_bet_amount DECIMAL(18, 2) NOT NULL,
     total_sessions INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_user_email (date_, coin_bet_amount )
 );
 
 -- 59
@@ -732,7 +733,7 @@ CREATE TABLE total_game_play_pool_amount_daily (
     total_sessions INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    UNIQUE KEY unique_user_email (date_, coin_bet_amount )
+    UNIQUE KEY unique_user_email (date_)
 );
 
 

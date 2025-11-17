@@ -1,7 +1,7 @@
  USE gaming_app_bi;
 
 -- Current month in UTC+8
-SET @current_month := DATE_FORMAT(CONVERT_TZ(NOW(), '+00:00', '+08:00'), '%Y-%m');
+SET @current_month := DATE_FORMAT(CONVERT_TZ(NOW(), '+00:00', '+08:00'), '%%Y-%%m');
 
 -- Get previous recorded total for this month
 SET @previous_total := COALESCE(
@@ -19,7 +19,7 @@ SET @new_sessions := COALESCE(
         FROM gaming_app_backend.game_session gs
         JOIN gaming_app_backend.user_game_session ugs
             ON gs.id = ugs.game_session
-        WHERE DATE_FORMAT(gs.created_at, '%Y-%m') = @current_month
+        WHERE DATE_FORMAT(gs.created_at, '%%Y-%%m') = @current_month
     ),
     0
 );
