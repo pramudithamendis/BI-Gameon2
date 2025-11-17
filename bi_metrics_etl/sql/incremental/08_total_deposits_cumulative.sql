@@ -98,4 +98,3 @@ ORDER BY date_;
 
 select * from total_deposits_cumulative;
 select * from total_deposits_cumulative;
----checked

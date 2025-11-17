@@ -65,4 +65,3 @@ ORDER BY date_;
 
 select * from total_deposits_crypto_cumulative;
 select * from total_deposits_crypto_daily;
---checked

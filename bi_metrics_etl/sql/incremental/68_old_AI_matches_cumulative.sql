@@ -3,9 +3,6 @@ USE gaming_app_bi;
 -- Get yesterday's date (converted to +08:00)
 SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
 
---------------------------------------------------------------------------------
--- Helper: A safe subquery wrapper to force only 1 row
---------------------------------------------------------------------------------
 
 -- Previous total_ai_matches
 SET @previous_total_ai_matches := COALESCE(
@@ -28,9 +25,6 @@ SET @yesterday_total_ai_matches := COALESCE(
 );
 
 
---------------------------------------------------------------------------------
--- player_wins
---------------------------------------------------------------------------------
 SET @previous_player_wins := COALESCE(
     (SELECT total_player_wins 
      FROM `old_AI_matches_cumulative`
@@ -50,9 +44,6 @@ SET @yesterday_player_wins := COALESCE(
 );
 
 
---------------------------------------------------------------------------------
--- player_losses
---------------------------------------------------------------------------------
 SET @previous_player_losses := COALESCE(
     (SELECT total_player_losses 
      FROM `old_AI_matches_cumulative`
@@ -72,9 +63,6 @@ SET @yesterday_player_losses := COALESCE(
 );
 
 
---------------------------------------------------------------------------------
--- spend_amount_usd
---------------------------------------------------------------------------------
 SET @previous_spend_amount_usd := COALESCE(
     (SELECT total_spent_in_usd 
      FROM `old_AI_matches_cumulative`
@@ -94,9 +82,6 @@ SET @yesterday_spend_amount_usd := COALESCE(
 );
 
 
---------------------------------------------------------------------------------
--- Insert cumulative
---------------------------------------------------------------------------------
 INSERT INTO `old_AI_matches_cumulative`
     (date_,total_ai_matches, total_player_wins, total_player_losses, total_spent_in_usd)
 VALUES
@@ -115,9 +100,6 @@ ON DUPLICATE KEY UPDATE
     updated_at = CURRENT_TIMESTAMP;
 
 
---------------------------------------------------------------------------------
--- View tables
---------------------------------------------------------------------------------
 SELECT * FROM `old_AI_matches_cumulative` ORDER BY date_ DESC;
 
 --checked

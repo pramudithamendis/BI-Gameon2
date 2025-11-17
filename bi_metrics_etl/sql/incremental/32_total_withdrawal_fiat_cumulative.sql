@@ -88,4 +88,3 @@ ORDER BY date_;
 
 select * from total_withdrawal_fiat_cumulative;
 select * from total_withdrawal_fiat_daily;
---checked

@@ -26,9 +26,7 @@ ORDER BY d.date_) as t) as tt
 where tt.d = @yesterday;
 
 
---------------------------------------------------------------------------------
--- Helper: A safe subquery wrapper to force only 1 row
---------------------------------------------------------------------------------
+
 -- Previous total_ai_matches
 SET @previous_total_ai_matches := COALESCE(
     (SELECT total_ai_matches 
@@ -51,9 +49,7 @@ SET @yesterday_total_ai_matches := COALESCE(
 );
 -- select @yesterday_total_ai_matches;
 
---------------------------------------------------------------------------------
--- player_wins
---------------------------------------------------------------------------------
+
 SET @previous_player_wins := COALESCE(
     (SELECT player_wins 
      FROM `02_AI_matches_cumulative`
@@ -74,9 +70,7 @@ SET @yesterday_player_wins := COALESCE(
 );
 -- select @yesterday_player_wins;
 
---------------------------------------------------------------------------------
--- player_losses
---------------------------------------------------------------------------------
+
 SET @previous_player_losses := COALESCE(
     (SELECT player_losses 
      FROM `02_AI_matches_cumulative`
@@ -96,9 +90,7 @@ SET @yesterday_player_losses := COALESCE(
 );
 -- select @yesterday_player_losses;
 
---------------------------------------------------------------------------------
--- spend_amount_usd
---------------------------------------------------------------------------------
+
 SET @previous_spend_amount_usd := COALESCE(
     (SELECT spend_amount_usd 
      FROM `02_AI_matches_cumulative`
@@ -118,9 +110,7 @@ SET @yesterday_spend_amount_usd := COALESCE(
 );
 -- select @yesterday_spend_amount_usd;
 
---------------------------------------------------------------------------------
--- Insert cumulative
---------------------------------------------------------------------------------
+
    
     
 INSERT INTO `02_AI_matches_cumulative`
@@ -141,8 +131,5 @@ ON DUPLICATE KEY UPDATE
     updated_at = CURRENT_TIMESTAMP;
 
 
---------------------------------------------------------------------------------
--- View tables
---------------------------------------------------------------------------------
 SELECT * FROM `02_AI_matches_cumulative` ORDER BY date_ DESC;
 SELECT * FROM `02_AI_matches_daily` ORDER BY date_ DESC;

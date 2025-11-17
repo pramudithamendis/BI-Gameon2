@@ -90,4 +90,3 @@ ORDER BY date_ DESC;
 
 select * from total_deposits_fiat_cumulative;
 select * from total_deposits_fiat_daily;
---checked

@@ -100,4 +100,3 @@ ORDER BY date_;
 select * from total_withdrawals_cumulative;
 select * from total_withdrawals_cumulative;
 
----checked

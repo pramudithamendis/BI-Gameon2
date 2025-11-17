@@ -13,5 +13,3 @@ GROUP BY date
 ON DUPLICATE KEY UPDATE 
     value = VALUES(value),
     updated_at = CURRENT_TIMESTAMP;
-
---done

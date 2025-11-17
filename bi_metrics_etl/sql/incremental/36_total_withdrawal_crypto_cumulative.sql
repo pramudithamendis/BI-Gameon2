@@ -64,4 +64,3 @@ ORDER BY date_;
 
 select * from total_withdrawal_crypto_cumulative;
 select * from total_withdrawal_crypto_daily;
---checked
