@@ -529,7 +529,8 @@ CREATE TABLE total_withdrawals_userwise_fiat_cumulative (
     total_completed_amount DECIMAL(18,2) DEFAULT 0,
     total_transactions INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_user_email (date_,user_id)
 );
 
 -- 45
