@@ -23,5 +23,3 @@ ON DUPLICATE KEY UPDATE
     updated_at = CURRENT_TIMESTAMP;
 select * from total_users_cumulative;
 select * from total_users_daily;
-
---checkedd
