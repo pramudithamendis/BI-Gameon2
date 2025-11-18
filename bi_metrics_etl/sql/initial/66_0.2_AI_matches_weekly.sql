@@ -1,12 +1,10 @@
 
 insert into 02_AI_matches_weekly(
-    week_label, player_name, player_email,
+    week_label, 
     total_ai_matches, player_wins, player_losses, spend_amount_usd
 )
 SELECT 
     CONCAT(YEAR(gs.created_at), '-W', LPAD(WEEK(gs.created_at, 1), 2, '0')) AS week_label, 
-    CONCAT(u_player.first_name, ' ', u_player.last_name) AS player_name,
-    u_player.email AS player_email,
     COUNT(*) AS total_ai_matches,
     SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END) AS player_wins,
     SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 THEN 1 ELSE 0 END) AS player_losses,
@@ -24,8 +22,7 @@ WHERE
     u_player.id NOT IN (1109,1110,1111,1112,1113,1164,1165,1166,1167,1168,1169)
     AND u_opponent.id IN (1109,1110,1111,1112,1113,1164,1165,1166,1167,1168,1169)
 GROUP BY 
-    week_label, 
-    u_player.id
+    week_label
 ORDER BY 
     week_label DESC,
     spend_amount_usd DESC;

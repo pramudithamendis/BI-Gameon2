@@ -811,30 +811,26 @@ CREATE TABLE 02_AI_matches_cumulative (
 CREATE TABLE 02_AI_matches_daily (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date_ DATE NOT NULL,
-    player_name VARCHAR(150),
-    player_email VARCHAR(150) NOT NULL,
     total_ai_matches INT NOT NULL DEFAULT 0,
     player_wins INT NOT NULL DEFAULT 0,
     player_losses INT NOT NULL DEFAULT 0,
     spend_amount_usd DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    unique key month_player_id(date_,player_email)
+    unique key month_player_id(date_)
 );
 
 -- 66
 CREATE TABLE 02_AI_matches_weekly (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     week_label VARCHAR(10) NOT NULL ,        -- e.g. 2025-W05
-    player_name VARCHAR(255),
-    player_email VARCHAR(255) NOT NULL,
     total_ai_matches INT NOT NULL DEFAULT 0,
     player_wins INT NOT NULL DEFAULT 0,
     player_losses INT NOT NULL DEFAULT 0,
     spend_amount_usd DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    unique key month_player_id(week_label,player_email)
+    unique key month_player_id(week_label)
 );
 
 
@@ -842,16 +838,13 @@ CREATE TABLE 02_AI_matches_weekly (
 CREATE TABLE 02_AI_matches_monthly (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     month_ VARCHAR(7) NOT NULL,                              -- Format: YYYY-MM
-    player_id BIGINT NOT NULL,                              -- Reference to user table
-    player_name VARCHAR(255),
-    player_email VARCHAR(255) NOT NULL,
     total_ai_matches INT NOT NULL DEFAULT 0,
     player_wins INT NOT NULL DEFAULT 0,
     player_losses INT NOT NULL DEFAULT 0,
     spend_amount_usd DECIMAL(10,2) NOT NULL DEFAULT 0.00,   -- 0.20 per loss
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    unique key month_player_id(month_,player_id)
+    unique key month_player_id(month_)
    );
 
 -- 68

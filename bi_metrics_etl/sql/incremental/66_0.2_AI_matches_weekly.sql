@@ -8,8 +8,6 @@ SET @last_week_label := CONCAT(
 
 INSERT INTO 02_AI_matches_weekly(
     week_label, 
-    player_name, 
-    player_email,
     total_ai_matches, 
     player_wins, 
     player_losses, 
@@ -17,8 +15,6 @@ INSERT INTO 02_AI_matches_weekly(
 )
 SELECT 
     @last_week_label AS week_label,
-    CONCAT(u_player.first_name, ' ', u_player.last_name) AS player_name,
-    u_player.email AS player_email,
     COUNT(*) AS total_ai_matches,
     SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END) AS player_wins,
     SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 THEN 1 ELSE 0 END) AS player_losses,
@@ -36,7 +32,7 @@ WHERE
     u_player.id NOT IN (1109,1110,1111,1112,1113)
     AND u_opponent.id IN (1109,1110,1111,1112,1113)
     AND CONCAT(YEAR(gs.created_at), '-W', LPAD(WEEK(gs.created_at, 1), 2, '0')) = @last_week_label
-GROUP BY u_player.id
+GROUP BY week_label
 ON DUPLICATE KEY UPDATE 
     total_ai_matches = VALUES(total_ai_matches),
     player_wins = VALUES(player_wins),

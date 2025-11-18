@@ -1,14 +1,11 @@
 
 INSERT INTO 02_AI_matches_monthly
 (
-    month_, player_id, player_name, player_email,
+    month_,
     total_ai_matches, player_wins, player_losses, spend_amount_usd
 )
 SELECT 
     DATE_FORMAT(gs.created_at, '%%Y-%%m') AS month_, 
-    u_player.id AS player_id,
-    CONCAT(u_player.first_name, ' ', u_player.last_name) AS player_name,
-    u_player.email AS player_email,
     COUNT(*) AS total_ai_matches,
     SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END) AS player_wins,
     SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 THEN 1 ELSE 0 END) AS player_losses,
@@ -26,8 +23,7 @@ WHERE
     u_player.id NOT IN (1109,1110,1111,1112,1113,1164,1165,1166,1167,1168,1169)
     AND u_opponent.id IN (1109,1110,1111,1112,1113,1164,1165,1166,1167,1168,1169)
 GROUP BY 
-    month_, 
-    u_player.id
+    month_
 ORDER BY 
     month_ DESC,
     spend_amount_usd DESC;

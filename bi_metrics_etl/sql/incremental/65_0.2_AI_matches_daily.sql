@@ -4,8 +4,6 @@ SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+0
 
 INSERT INTO 02_AI_matches_daily (
     date_, 
-    player_name, 
-    player_email, 
     total_ai_matches, 
     player_wins, 
     player_losses, 
@@ -13,8 +11,6 @@ INSERT INTO 02_AI_matches_daily (
 )
 SELECT 
     DATE(CONVERT_TZ(gs.created_at, '+00:00', '+08:00')) AS date_,
-    CONCAT(u_player.first_name, ' ', u_player.last_name)            AS player_name,
-    u_player.email                                                  AS player_email,
     COUNT(*)                                                        AS total_ai_matches,
     SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END)            AS player_wins,
     SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 
@@ -35,9 +31,8 @@ WHERE
     AND u_player.id   NOT IN (1109,1110,1111,1112,1113)  -- exclude bots for player
     AND u_opponent.id IN     (1109,1110,1111,1112,1113)  -- include only bot opponents
 GROUP BY 
-    date_, u_player.id, player_name, player_email
+    date_
 ON DUPLICATE KEY UPDATE 
-    player_name       = VALUES(player_name),
     total_ai_matches  = VALUES(total_ai_matches),
     player_wins       = VALUES(player_wins),
     player_losses     = VALUES(player_losses),

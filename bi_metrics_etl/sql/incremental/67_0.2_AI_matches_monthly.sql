@@ -4,14 +4,11 @@ SET @last_month := DATE_FORMAT(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+0
 
 INSERT INTO 02_AI_matches_monthly
 (
-    month_, player_id, player_name, player_email,
+    month_,
     total_ai_matches, player_wins, player_losses, spend_amount_usd, updated_at
 )
 SELECT 
     DATE_FORMAT(CONVERT_TZ(gs.created_at, '+00:00', '+08:00'), '%%Y-%%m') AS month_, 
-    u_player.id AS player_id,
-    CONCAT(u_player.first_name, ' ', u_player.last_name) AS player_name,
-    u_player.email AS player_email,
     COUNT(*) AS total_ai_matches,
     SUM(CASE WHEN ugp.is_game_won = 1 THEN 1 ELSE 0 END) AS player_wins,
     SUM(CASE WHEN ugp.is_game_won = 0 AND ugp.is_game_finished = 1 THEN 1 ELSE 0 END) AS player_losses,
@@ -31,13 +28,10 @@ WHERE
     AND u_player.id NOT IN (1109,1110,1111,1112,1113)
     AND u_opponent.id IN (1109,1110,1111,1112,1113)
 GROUP BY 
-    month_, 
-    u_player.id
+    month_
 ON DUPLICATE KEY UPDATE
     total_ai_matches = VALUES(total_ai_matches),
     player_wins = VALUES(player_wins),
     player_losses = VALUES(player_losses),
     spend_amount_usd = VALUES(spend_amount_usd),
-    player_name = VALUES(player_name),
-    player_email = VALUES(player_email),
     updated_at = CURRENT_TIMESTAMP;
