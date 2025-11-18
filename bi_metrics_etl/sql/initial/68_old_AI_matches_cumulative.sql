@@ -1,4 +1,3 @@
-truncate table old_AI_matches_cumulative;
 INSERT INTO old_AI_matches_cumulative (
 date_,
      total_ai_matches,total_player_wins,total_player_losses,total_spent_in_usd
