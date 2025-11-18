@@ -29,6 +29,7 @@ LEFT JOIN gaming_app_backend.user_coin_action uca
 WHERE 
     gs.game_session_mode = 5
     AND DATE(CONVERT_TZ(gs.created_at, '+00:00', '+08:00')) = @yesterday
+     AND DATE(gs.created_at) BETWEEN '2025-10-07' AND '2025-10-16'
 GROUP BY 
     match_date
 ON DUPLICATE KEY UPDATE

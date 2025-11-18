@@ -30,6 +30,7 @@ WHERE
     gs.game_session_mode = 5
     AND YEAR(gs.created_at)  = @prev_month_year
     AND MONTH(gs.created_at) = @prev_month_num
+     AND DATE(gs.created_at) BETWEEN '2025-10-07' AND '2025-10-16'
 GROUP BY year_, month_number
 ON DUPLICATE KEY UPDATE 
     total_ai_matches     = VALUES(total_ai_matches),

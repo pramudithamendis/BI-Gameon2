@@ -23,6 +23,7 @@ WHERE
     gs.game_session_mode = 5
     AND YEAR(gs.created_at) = @last_week_year
     AND WEEK(gs.created_at, 1) = @last_week_number
+     AND DATE(gs.created_at) BETWEEN '2025-10-07' AND '2025-10-16'
 GROUP BY year_, week_number
 ON DUPLICATE KEY UPDATE
     total_ai_matches     = VALUES(total_ai_matches),
