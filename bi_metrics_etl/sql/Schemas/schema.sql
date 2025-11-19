@@ -974,3 +974,42 @@ CREATE TABLE wallet_balance_monthly (
  );
 
 
+
+-- 77
+CREATE TABLE total_records_daily (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+	date_ datetime,
+    total_records int not null,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    unique key date_total_records(date_)
+);
+
+-- 78
+CREATE TABLE total_records_weekly (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+	year_week int not null,
+    total_records int not null,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    unique key date_total_records(year_week)
+);
+
+-- 79
+CREATE TABLE total_records_monthly (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+	month_ VARCHAR(7) NOT NULL,
+    total_records int not null,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    unique key date_total_records(month_)
+);
+
+-- 80
+CREATE TABLE total_records_cumulative (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY unique,
+    date_ DATETIME,
+    total_records INT NOT NULL,
+    calculated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
