@@ -1,14 +1,6 @@
 USE gaming_app_bi;
 
-CREATE TABLE registration_referral_daily (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    date_ DATE NOT NULL,                    -- Local date (+08:00)
-    total_completed_amount INT NOT NULL,    -- Count for the day
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
-    UNIQUE KEY uq_date (date_)              -- Prevent duplicate entries per day
-);
+
 
 select * from registration_referral_daily;
 

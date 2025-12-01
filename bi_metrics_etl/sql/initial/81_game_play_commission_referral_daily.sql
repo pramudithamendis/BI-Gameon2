@@ -1,14 +1,6 @@
 USE gaming_app_bi;
 
-CREATE TABLE game_play_commission_referral_daily (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    date_ DATE NOT NULL,
-    game_play_commission DECIMAL(18,2) NOT NULL DEFAULT 0,
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
-    UNIQUE KEY uniq_date (date_)
-);
+
 select * from game_play_commission_referral_daily;
 
 -- Set cutoff datetime

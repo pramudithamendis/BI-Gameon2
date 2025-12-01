@@ -1,17 +1,4 @@
-CREATE TABLE game_play_commission_referral_weekly (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
-    year_week INT NOT NULL,              -- Example: 202452
-    week_start_date DATE NOT NULL,
-    week_end_date DATE NOT NULL,
-
-    coins_given DECIMAL(18,2) NOT NULL DEFAULT 0,
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
-    UNIQUE KEY uniq_year_week (year_week)
-);
 select * from game_play_commission_referral_weekly;
 
 SET @cutoff := '2025-09-27 18:30:00';

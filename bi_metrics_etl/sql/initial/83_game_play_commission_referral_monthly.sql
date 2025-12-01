@@ -1,12 +1,4 @@
-CREATE TABLE game_play_commission_referral_monthly (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    month VARCHAR(7) NOT NULL,                 -- Format: YYYY-MM
-    coins_given DECIMAL(18, 4) NOT NULL,       -- Total coins per month
-    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    UNIQUE KEY unique_month (month)
-);
 -- drop table game_play_commission_referral_monthly;
 select * from game_play_commission_referral_monthly;
 

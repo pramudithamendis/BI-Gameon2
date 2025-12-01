@@ -1,11 +1,3 @@
-CREATE TABLE registration_referral_monthly (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    month VARCHAR(7) NOT NULL,     -- Format: YYYY-MM
-    total_completed_amount INT NOT NULL DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    UNIQUE KEY unique_month (month)
-);
 
 select * from registration_referral_monthly;
 

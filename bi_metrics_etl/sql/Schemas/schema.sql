@@ -1013,3 +1013,92 @@ CREATE TABLE total_records_cumulative (
     calculated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- 81
+CREATE TABLE game_play_commission_referral_daily (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    date_ DATE NOT NULL,
+    game_play_commission DECIMAL(18,2) NOT NULL DEFAULT 0,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uniq_date (date_)
+);
+
+-- 82
+CREATE TABLE game_play_commission_referral_weekly (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+    year_week INT NOT NULL,              -- Example: 202452
+    week_start_date DATE NOT NULL,
+    week_end_date DATE NOT NULL,
+
+    coins_given DECIMAL(18,2) NOT NULL DEFAULT 0,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    UNIQUE KEY uniq_year_week (year_week)
+);
+
+-- 83
+CREATE TABLE game_play_commission_referral_monthly (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    month VARCHAR(7) NOT NULL,                 -- Format: YYYY-MM
+    coins_given DECIMAL(18, 4) NOT NULL,       -- Total coins per month
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    UNIQUE KEY unique_month (month)
+);
+
+-- 84
+CREATE TABLE game_play_commission_referral_cumulative (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL UNIQUE,
+    game_play_commission DECIMAL(18,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+-- 85
+CREATE TABLE registration_referral_daily (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL,                    -- Local date (+08:00)
+    total_completed_amount INT NOT NULL,    -- Count for the day
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    UNIQUE KEY uq_date (date_)              -- Prevent duplicate entries per day
+);
+
+-- 86
+CREATE TABLE registration_referral_weekly (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    year_week INT NOT NULL,                 -- YYYYWW format
+    week_start_date DATE NOT NULL,
+    week_end_date DATE NOT NULL,
+    total_completed_amount INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_year_week (year_week)
+);
+
+-- 87
+CREATE TABLE registration_referral_monthly (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    month VARCHAR(7) NOT NULL,     -- Format: YYYY-MM
+    total_completed_amount INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_month (month)
+);
+
+
+-- 88
+CREATE TABLE registration_referral_cumulative (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL UNIQUE,
+    total_completed_amount DECIMAL(18,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

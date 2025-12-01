@@ -1,13 +1,4 @@
-CREATE TABLE registration_referral_weekly (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    year_week INT NOT NULL,                 -- YYYYWW format
-    week_start_date DATE NOT NULL,
-    week_end_date DATE NOT NULL,
-    total_completed_amount INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    UNIQUE KEY uniq_year_week (year_week)
-);
+
 
 select * from registration_referral_weekly;
 
