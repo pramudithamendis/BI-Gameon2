@@ -27,5 +27,3 @@ ON DUPLICATE KEY UPDATE
     game_play_commission = VALUES(game_play_commission),
     updated_at = CURRENT_TIMESTAMP;
 select * from game_play_commission_referral_daily;
-
-truncate table game_play_commission_referral_daily;
