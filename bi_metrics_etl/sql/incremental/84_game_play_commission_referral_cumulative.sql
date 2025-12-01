@@ -1,7 +1,7 @@
 USE gaming_app_bi;
 
 -- Get yesterday's date in Singapore timezone
-SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 6 DAY), '+00:00', '+08:00'));
+SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
 
 -- Get cumulative total before yesterday
 SET @previous_total := COALESCE(
@@ -17,7 +17,7 @@ SET @previous_total := COALESCE(
 
 select @previous_total;
 
-SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 6 DAY), '+00:00', '+08:00'));
+SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
 -- Get yesterday's new deposit amount and transactions
 SET @yesterday_amount := COALESCE(
     (
