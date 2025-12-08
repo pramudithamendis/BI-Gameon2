@@ -39,7 +39,7 @@ ON DUPLICATE KEY UPDATE
     wins = VALUES(wins),
     losses = VALUES(losses),
     win_rate_percentage = VALUES(win_rate_percentage),
-    created_at= CURRENT_TIMESTAMP;
+    updated_at= CURRENT_TIMESTAMP;
 
 
 select * from user_gameplay_winning_rate_monthly;

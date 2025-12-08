@@ -8,6 +8,7 @@ CREATE TABLE user_gameplay_winning_rate_monthly (
     losses INT NOT NULL,
     win_rate_percentage DECIMAL(5,2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE KEY uniq_user_month (month, user_id)
 );
 select * from user_gameplay_winning_rate_monthly;
