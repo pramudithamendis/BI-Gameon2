@@ -1102,3 +1102,122 @@ CREATE TABLE registration_referral_cumulative (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- 89
+CREATE TABLE user_gameplay_count_daily (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL,                    -- Local date (+08:00)
+    user_id INT NOT NULL,
+    count INT NOT NULL,    -- Count for the day
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    UNIQUE KEY uq_date (date_,user_id)              -- Prevent duplicate entries per day
+);
+
+-- 90
+CREATE TABLE user_gameplay_count_weekly (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    year_week INT NOT NULL ,                       -- e.g., 202544 (YYYYWW format)
+    week_start_date DATE NOT NULL,                -- first date of the week
+    week_end_date DATE NOT NULL,                  -- last date of the week
+    user_id INT NOT NULL,
+    count INT NOT NULL DEFAULT 0, -- sum of actual_amount
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uq_date (year_week,user_id) 
+);
+
+-- 91
+CREATE TABLE user_gameplay_count_monthly (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    month_ VARCHAR(7) NOT NULL, -- format YYYY-MM
+    user_id INT NOT NULL,
+    count INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        UNIQUE KEY uq_date (month_,user_id) 
+);
+
+
+-- 92
+CREATE TABLE user_gameplay_count_cumulative (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL,
+    user_id INT NOT NULL,
+    cumulative_count INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    UNIQUE KEY uq_date_user (date_, user_id)
+);
+
+-- 93
+CREATE TABLE user_gameplay_winning_rate_daily (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+    date_ DATE NOT NULL,
+    user_id BIGINT NOT NULL,
+
+    total_games INT NOT NULL,
+    wins INT NOT NULL,
+    losses INT NOT NULL,
+
+    win_rate_percentage DECIMAL(5,2) NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_user_date (date_, user_id)
+);
+
+-- 94
+
+CREATE TABLE user_gameplay_winning_rate_weekly (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+	year_week INT NOT NULL unique, 
+    week_start DATE NOT NULL,
+    user_id BIGINT NOT NULL,
+
+    total_games INT NOT NULL,
+    wins INT NOT NULL,
+    losses INT NOT NULL,
+
+    win_rate_percentage DECIMAL(5,2) NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_user_week (week_start, user_id)
+);
+
+-- 95
+CREATE TABLE user_gameplay_winning_rate_monthly (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    month VARCHAR(7) NOT NULL,
+    user_id BIGINT NOT NULL,
+    total_games INT NOT NULL,
+    wins INT NOT NULL,
+    losses INT NOT NULL,
+    win_rate_percentage DECIMAL(5,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_user_month (month, user_id)
+);
+
+-- 96
+CREATE TABLE user_gameplay_winning_rate_cumulative (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+    date_ DATE NOT NULL,
+    user_id BIGINT NOT NULL,
+
+    cumulative_total_games INT NOT NULL,
+    cumulative_wins INT NOT NULL,
+    cumulative_losses INT NOT NULL,
+
+    cumulative_win_rate_percentage DECIMAL(5,2) NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_user_date (date_, user_id)
+);

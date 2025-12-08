@@ -3,7 +3,7 @@ USE gaming_app_bi;
 -- ✅ Get last month in YYYY-MM format (Singapore timezone safe)
 SET @last_month := DATE_FORMAT(
     CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+00:00', '+08:00'),
-    '%Y-%m'
+    '%%Y-%%m'
 );
 
 INSERT INTO user_gameplay_winning_rate_monthly (
@@ -30,7 +30,7 @@ SELECT
 
 FROM gaming_app_backend.user_game_session w
 
-WHERE DATE_FORMAT(CONVERT_TZ(w.created_at, '+00:00', '+08:00'), '%Y-%m') = @last_month
+WHERE DATE_FORMAT(CONVERT_TZ(w.created_at, '+00:00', '+08:00'), '%%Y-%%m') = @last_month
 
 GROUP BY month, user_id
 

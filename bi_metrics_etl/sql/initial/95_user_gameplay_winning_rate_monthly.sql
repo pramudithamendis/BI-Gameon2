@@ -1,16 +1,4 @@
-drop table user_gameplay_winning_rate_monthly;
-CREATE TABLE user_gameplay_winning_rate_monthly (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    month VARCHAR(7) NOT NULL,
-    user_id BIGINT NOT NULL,
-    total_games INT NOT NULL,
-    wins INT NOT NULL,
-    losses INT NOT NULL,
-    win_rate_percentage DECIMAL(5,2) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    UNIQUE KEY uniq_user_month (month, user_id)
-);
+
 select * from user_gameplay_winning_rate_monthly;
 
 SET @cutoff := '2025-09-27 18:30:00';
@@ -23,7 +11,7 @@ INSERT INTO user_gameplay_winning_rate_monthly (
     win_rate_percentage
 )
 SELECT 
-    DATE_FORMAT(w.created_at, '%Y-%m') AS month,
+    DATE_FORMAT(w.created_at, '%%Y-%%m') AS month,
 
     w.user AS user_id,
 

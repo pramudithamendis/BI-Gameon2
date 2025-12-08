@@ -1,8 +1,3 @@
-
-
-
-
-
 USE gaming_app_bi;
 
 -- Get yesterday in Singapore timezone
