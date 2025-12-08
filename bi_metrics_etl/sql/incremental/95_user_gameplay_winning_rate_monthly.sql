@@ -1,6 +1,5 @@
 USE gaming_app_bi;
 
--- ✅ Get last month in YYYY-MM format (Singapore timezone safe)
 SET @last_month := DATE_FORMAT(
     CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 MONTH), '+00:00', '+08:00'),
     '%%Y-%%m'

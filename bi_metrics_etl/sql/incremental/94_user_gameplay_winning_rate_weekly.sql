@@ -1,7 +1,7 @@
 
 USE gaming_app_bi;
 
--- ✅ Get LAST WEEK range in Singapore time
+
 SET @week_start := DATE_SUB(
     DATE(CONVERT_TZ(NOW(), '+00:00', '+08:00')),
     INTERVAL (WEEKDAY(DATE(CONVERT_TZ(NOW(), '+00:00', '+08:00'))) + 7) DAY

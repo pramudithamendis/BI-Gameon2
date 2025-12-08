@@ -1,6 +1,6 @@
 USE gaming_app_bi;
 
--- Get yesterday in Singapore timezone
+
 SET @yesterday := DATE(CONVERT_TZ(DATE_SUB(NOW(), INTERVAL 1 DAY), '+00:00', '+08:00'));
 
 INSERT INTO user_gameplay_winning_rate_cumulative (
@@ -15,12 +15,12 @@ SELECT
     d.date_,
     d.user_id,
 
-    -- Add yesterday totals to previous cumulative values
+
     COALESCE(p.cumulative_total_games, 0) + d.total_games AS cumulative_total_games,
     COALESCE(p.cumulative_wins, 0) + d.wins AS cumulative_wins,
     COALESCE(p.cumulative_losses, 0) + d.losses AS cumulative_losses,
 
-    -- Recalculate cumulative win rate
+
     ROUND(
         (
             (COALESCE(p.cumulative_wins, 0) + d.wins) /
@@ -31,7 +31,7 @@ SELECT
 
 FROM user_gameplay_winning_rate_daily d
 
--- Get previous day's cumulative record
+
 LEFT JOIN user_gameplay_winning_rate_cumulative p
     ON p.user_id = d.user_id
    AND p.date_ = DATE_SUB(@yesterday, INTERVAL 1 DAY)

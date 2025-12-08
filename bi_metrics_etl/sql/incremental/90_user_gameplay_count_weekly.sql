@@ -1,6 +1,6 @@
 USE gaming_app_bi;
 
--- ✅ Get last completed week (Singapore timezone)
+
 SET @last_week_start := DATE(
     SUBDATE(
         CONVERT_TZ(NOW(), '+00:00', '+08:00'),
