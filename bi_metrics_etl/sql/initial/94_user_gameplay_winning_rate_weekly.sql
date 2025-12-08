@@ -16,7 +16,7 @@ CREATE TABLE user_gameplay_winning_rate_weekly (
     win_rate_percentage DECIMAL(5,2) NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
+   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE KEY uniq_user_week (week_start, user_id)
 );
 select * from user_gameplay_winning_rate_weekly;
