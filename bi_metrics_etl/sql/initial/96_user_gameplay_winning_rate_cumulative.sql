@@ -1,6 +1,6 @@
 
 
--- drop table user_gameplay_winning_rate_cumulative;
+drop table user_gameplay_winning_rate_cumulative;
 CREATE TABLE user_gameplay_winning_rate_cumulative (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
@@ -14,7 +14,7 @@ CREATE TABLE user_gameplay_winning_rate_cumulative (
     cumulative_win_rate_percentage DECIMAL(5,2) NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE KEY uniq_user_date (date_, user_id)
 );
 
