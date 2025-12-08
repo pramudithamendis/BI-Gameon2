@@ -1,4 +1,4 @@
-drop table user_gameplay_winning_rate_daily;
+-- drop table user_gameplay_winning_rate_daily;
 CREATE TABLE user_gameplay_winning_rate_daily (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
@@ -12,7 +12,7 @@ CREATE TABLE user_gameplay_winning_rate_daily (
     win_rate_percentage DECIMAL(5,2) NOT NULL,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE KEY uniq_user_date (date_, user_id)
 );
 
@@ -46,4 +46,4 @@ WHERE w.created_at >= @cutoff
 GROUP BY date_, user_id;
 
 select * from user_gameplay_winning_rate_daily;
-truncate table user_gameplay_winning_rate_daily;
+-- truncate table user_gameplay_winning_rate_daily;
