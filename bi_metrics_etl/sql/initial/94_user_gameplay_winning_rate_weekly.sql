@@ -1,8 +1,11 @@
+
+
 drop table user_gameplay_winning_rate_weekly;
 
 CREATE TABLE user_gameplay_winning_rate_weekly (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
+	year_week INT NOT NULL unique, 
     week_start DATE NOT NULL,
     user_id BIGINT NOT NULL,
 
@@ -20,6 +23,7 @@ select * from user_gameplay_winning_rate_weekly;
 
 SET @cutoff := '2025-09-27 18:30:00';
 INSERT INTO user_gameplay_winning_rate_weekly (
+	year_week,
     week_start,
     user_id,
     total_games,
@@ -28,6 +32,7 @@ INSERT INTO user_gameplay_winning_rate_weekly (
     win_rate_percentage
 )
 SELECT 
+	YEARWEEK(w.created_at, 1) AS year_week,
     DATE_SUB(DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00')),
         INTERVAL WEEKDAY(DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00'))) DAY
     ) AS week_start,
@@ -46,7 +51,7 @@ SELECT
 
 FROM gaming_app_backend.user_game_session w
 WHERE w.created_at >= @cutoff
-GROUP BY week_start, user_id
+GROUP BY year_week,week_start, user_id
 
 ON DUPLICATE KEY UPDATE
     total_games = VALUES(total_games),
