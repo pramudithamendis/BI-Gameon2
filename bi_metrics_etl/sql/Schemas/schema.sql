@@ -1175,8 +1175,7 @@ CREATE TABLE user_gameplay_winning_rate_daily (
 CREATE TABLE user_gameplay_winning_rate_weekly (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
-	year_week INT NOT NULL unique, 
-    week_start DATE NOT NULL,
+	year_week INT NOT NULL, 
     user_id BIGINT NOT NULL,
 
     total_games INT NOT NULL,
@@ -1187,8 +1186,9 @@ CREATE TABLE user_gameplay_winning_rate_weekly (
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    UNIQUE KEY uniq_user_week (week_start, user_id)
+    UNIQUE KEY uniq_user_week (year_week, user_id)
 );
+
 
 -- 95
 CREATE TABLE user_gameplay_winning_rate_monthly (

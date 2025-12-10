@@ -6,7 +6,6 @@ select * from user_gameplay_winning_rate_weekly;
 SET @cutoff := '2025-09-27 18:30:00';
 INSERT INTO user_gameplay_winning_rate_weekly (
 	year_week,
-    week_start,
     user_id,
     total_games,
     wins,
@@ -15,10 +14,6 @@ INSERT INTO user_gameplay_winning_rate_weekly (
 )
 SELECT 
 	YEARWEEK(w.created_at, 1) AS year_week,
-    DATE_SUB(DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00')),
-        INTERVAL WEEKDAY(DATE(CONVERT_TZ(w.created_at, '+00:00', '+08:00'))) DAY
-    ) AS week_start,
-
     w.user AS user_id,
 
     COUNT(*) AS total_games,
@@ -33,8 +28,7 @@ SELECT
 
 FROM gaming_app_backend.user_game_session w
 WHERE w.created_at >= @cutoff
-GROUP BY year_week,week_start, user_id
-
+GROUP BY year_week,user_id
 ON DUPLICATE KEY UPDATE
     total_games = VALUES(total_games),
     wins = VALUES(wins),
