@@ -45,7 +45,6 @@ CREATE TABLE user_leaderboard_weekly (
     id INT AUTO_INCREMENT PRIMARY KEY,
     year_week INT NOT NULL,                    
     user_id INT NOT NULL,
-	earningsWeight DECIMAL(18,2) NOT NULL DEFAULT 0,
     score DECIMAL(18,2) NOT NULL DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -55,17 +54,15 @@ CREATE TABLE user_leaderboard_weekly (
 
 select * from user_leaderboard_weekly;
 
-
-
-
 SET @cutoff := '2025-09-27 18:30:00';
-INSERT INTO user_leaderboard_weekly (year_week, user_id, earningsWeight, score) 
+INSERT INTO user_leaderboard_weekly (year_week, user_id,  score) 
 select 
 ued.year_week as year_week, 
 ued.user_id as user_id,
-@earningsWeight:=(ued.amount/1000) as earningsWeight,
 (ugpwrd.win_rate_percentage * 0.7 + @earningsWeight * 0.2 + ugpwrd.total_games * 0.1) as score
 from 
 user_earnings_weekly ued,
 user_gameplay_winning_rate_weekly ugpwrd
 where ued.user_id = ugpwrd.user_id and ued.year_week = ugpwrd.year_week;
+
+select * from user_leaderboard_weekly;

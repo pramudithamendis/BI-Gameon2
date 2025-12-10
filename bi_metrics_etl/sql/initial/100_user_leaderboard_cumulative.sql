@@ -33,12 +33,11 @@ SELECT
     ) AS cumulative_amount
 
 FROM user_earnings_daily;
-select * from user_earnings_cumulative;
+
 select * from user_earnings_daily;
 
 
 DROP TABLE IF EXISTS user_leaderboard_cumulative;
-
 CREATE TABLE user_leaderboard_cumulative (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date_ DATE NOT NULL,

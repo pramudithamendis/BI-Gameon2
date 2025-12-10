@@ -42,7 +42,6 @@ CREATE TABLE user_leaderboard_monthly (
     id INT AUTO_INCREMENT PRIMARY KEY,
     month VARCHAR(7) NOT NULL,  
     user_id INT NOT NULL,
-    earningsWeight DECIMAL(18,2) NOT NULL DEFAULT 0,
     score DECIMAL(18,2) NOT NULL DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -54,11 +53,10 @@ select * from user_leaderboard_monthly;
 
 
 SET @cutoff := '2025-09-27 18:30:00';
-INSERT INTO user_leaderboard_monthly (month, user_id, earningsWeight, score) 
+INSERT INTO user_leaderboard_monthly (month, user_id,  score) 
 SELECT 
     ugpwrd.month AS month,
     ugpwrd.user_id,
-    AVG(ued.amount / 1000) AS earningsWeight,
     AVG(
         (ugpwrd.win_rate_percentage * 0.7) +
         ((ued.amount / 1000) * 0.2) +

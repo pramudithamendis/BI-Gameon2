@@ -40,7 +40,6 @@ CREATE TABLE user_leaderboard_daily (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date_ DATE NOT NULL,                    
     user_id INT NOT NULL,
-    earningsWeight DECIMAL(18,2) NOT NULL DEFAULT 0,
     score DECIMAL(18,2) NOT NULL DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -52,12 +51,10 @@ select * from user_leaderboard_daily;
 
 
 SET @cutoff := '2025-09-27 18:30:00';
-INSERT INTO user_leaderboard_daily (date_, user_id,earningsWeight, score) 
+INSERT INTO user_leaderboard_daily (date_, user_id, score) 
 SELECT 
     DATE(CONVERT_TZ(ugpwrd.date_, '+00:00', '+08:00')) AS date_,
     ugpwrd.user_id,
-
-    AVG(ued.amount / 1000) AS earningsWeight,
 
     AVG(
         (ugpwrd.win_rate_percentage * 0.7) +
