@@ -35,20 +35,10 @@ select * from user_earnings_daily;
 
 select * from user_gameplay_winning_rate_daily;
 
-drop table user_leaderboard_daily;
-CREATE TABLE user_leaderboard_daily (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    date_ DATE NOT NULL,                    
-    user_id INT NOT NULL,
-    score DECIMAL(18,2) NOT NULL DEFAULT 0,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
-    UNIQUE KEY uq_date (date_, user_id)
-);
+
+
 
 select * from user_leaderboard_daily;
-
 
 SET @cutoff := '2025-09-27 18:30:00';
 INSERT INTO user_leaderboard_daily (date_, user_id, score) 

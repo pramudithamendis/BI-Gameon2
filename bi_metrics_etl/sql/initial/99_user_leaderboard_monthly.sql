@@ -37,17 +37,6 @@ select * from user_earnings_monthly;
 
 select * from user_gameplay_winning_rate_monthly;
 
-drop table user_leaderboard_monthly;
-CREATE TABLE user_leaderboard_monthly (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    month VARCHAR(7) NOT NULL,  
-    user_id INT NOT NULL,
-    score DECIMAL(18,2) NOT NULL DEFAULT 0,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
-    UNIQUE KEY uq_date (month, user_id)
-);
 
 select * from user_leaderboard_monthly;
 

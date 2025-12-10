@@ -1221,3 +1221,56 @@ CREATE TABLE user_gameplay_winning_rate_cumulative (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     UNIQUE KEY uniq_user_date (date_, user_id)
 );
+
+
+-- 97
+CREATE TABLE user_leaderboard_daily (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL,                    
+    user_id INT NOT NULL,
+    score DECIMAL(18,2) NOT NULL DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    UNIQUE KEY uq_date (date_, user_id)
+);
+
+-- 98
+CREATE TABLE user_leaderboard_weekly (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    year_week INT NOT NULL,                    
+    user_id INT NOT NULL,
+    score DECIMAL(18,2) NOT NULL DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    UNIQUE KEY uq_date (year_week, user_id)
+);
+
+-- 99
+CREATE TABLE user_leaderboard_monthly (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    month VARCHAR(7) NOT NULL,  
+    user_id INT NOT NULL,
+    score DECIMAL(18,2) NOT NULL DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    UNIQUE KEY uq_date (month, user_id)
+);
+
+
+-- 100
+
+CREATE TABLE user_leaderboard_cumulative (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ DATE NOT NULL,
+    user_id INT NOT NULL,
+
+    daily_score DECIMAL(18,2) NOT NULL,
+    cumulative_score DECIMAL(18,2) NOT NULL,
+
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    UNIQUE KEY uq_user_date (date_, user_id)
+);

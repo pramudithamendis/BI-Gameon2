@@ -40,17 +40,6 @@ select * from user_earnings_weekly;
 
 select * from user_gameplay_winning_rate_weekly;
 
-drop table user_leaderboard_weekly ;
-CREATE TABLE user_leaderboard_weekly (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    year_week INT NOT NULL,                    
-    user_id INT NOT NULL,
-    score DECIMAL(18,2) NOT NULL DEFAULT 0,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
-    UNIQUE KEY uq_date (year_week, user_id)
-);
 
 select * from user_leaderboard_weekly;
 
