@@ -16,7 +16,7 @@ SET @cutoff := '2025-09-27 18:30:00';
 INSERT INTO user_earnings_monthly (month, user_id, amount) 
 select 
   -- *,
-  DATE_FORMAT(w.created_at, '%Y-%m') AS month,
+  DATE_FORMAT(w.created_at, '%%Y-%%m') AS month,
   w.user as user_id,
   sum(gcb.amount) as amount
 FROM 
