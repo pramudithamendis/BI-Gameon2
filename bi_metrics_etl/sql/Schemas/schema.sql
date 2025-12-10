@@ -1269,8 +1269,8 @@ CREATE TABLE user_leaderboard_cumulative (
 
     daily_score DECIMAL(18,2) NOT NULL,
     cumulative_score DECIMAL(18,2) NOT NULL,
-
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     UNIQUE KEY uq_user_date (date_, user_id)
 );

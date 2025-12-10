@@ -42,8 +42,8 @@ select * from user_leaderboard_monthly;
 
 
 SET @cutoff := '2025-09-27 18:30:00';
-INSERT INTO user_leaderboard_monthly (month, user_id,  score) 
-SELECT 
+INSERT INTO user_leaderboard_monthly (month, user_id,  score)
+SELECT
     ugpwrd.month AS month,
     ugpwrd.user_id,
     AVG(
@@ -52,11 +52,11 @@ SELECT
         (ugpwrd.total_games * 0.1)
     ) AS score
 FROM user_earnings_monthly ued
-JOIN user_gameplay_winning_rate_monthly ugpwrd 
+JOIN user_gameplay_winning_rate_monthly ugpwrd
     ON ued.user_id = ugpwrd.user_id
    AND ued.month = ugpwrd.month
 GROUP BY month, ugpwrd.user_id
-ON DUPLICATE KEY UPDATE 
+ON DUPLICATE KEY UPDATE
     score = VALUES(score),
     updated_at = CURRENT_TIMESTAMP;
 

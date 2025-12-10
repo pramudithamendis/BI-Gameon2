@@ -9,6 +9,7 @@ CREATE TABLE user_earnings_cumulative (
     cumulative_amount DECIMAL(18,2) NOT NULL,
 
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     UNIQUE KEY uq_user_date (date_, user_id)
 );
