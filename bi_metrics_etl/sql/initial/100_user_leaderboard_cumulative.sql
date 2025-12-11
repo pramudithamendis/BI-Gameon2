@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS user_earnings_cumulative;
 
-CREATE TABLE user_earnings_cumulative (
+CREATE TEMPORARY TABLE user_earnings_cumulative (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date_ DATE NOT NULL,
     user_id INT NOT NULL,
