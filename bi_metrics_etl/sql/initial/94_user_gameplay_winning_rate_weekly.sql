@@ -37,4 +37,3 @@ ON DUPLICATE KEY UPDATE
     created_at = CURRENT_TIMESTAMP;
 
 select * from user_gameplay_winning_rate_weekly;
-truncate table user_gameplay_winning_rate_weekly;
