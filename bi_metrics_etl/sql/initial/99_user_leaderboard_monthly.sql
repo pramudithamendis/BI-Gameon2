@@ -14,19 +14,21 @@ select * from user_earnings_monthly;
 
 SET @cutoff := '2025-09-27 18:30:00';
 INSERT INTO user_earnings_monthly (month, user_id, amount) 
-select 
-  -- *,
-  DATE_FORMAT(w.created_at, '%%Y-%%m') AS month,
-  w.user as user_id,
-  sum(gcb.amount) as amount
-FROM 
-gaming_app_backend.user_game_session w,
-gaming_app_backend.game_session gs,
-gaming_app_backend.game_coin_bet gcb
-WHERE 
-w.created_at >= @cutoff
-and w.is_game_won = 1
-and w.game_session = gs.id and gs.game_coin_bet = gcb.id
+SELECT 
+  DATE_FORMAT(w.created_at, '%Y-%m') AS month,
+  w.user AS user_id,
+  SUM(
+    CASE 
+      WHEN w.is_game_won = 1 THEN gcb.amount
+      ELSE 0
+    END
+  ) AS amount
+FROM gaming_app_backend.user_game_session w
+JOIN gaming_app_backend.game_session gs 
+  ON w.game_session = gs.id
+JOIN gaming_app_backend.game_coin_bet gcb 
+  ON gs.game_coin_bet = gcb.id
+WHERE w.created_at >= @cutoff
 GROUP BY month, user_id
 ON DUPLICATE KEY UPDATE 
     amount = VALUES(amount),
@@ -34,12 +36,7 @@ ON DUPLICATE KEY UPDATE
 
 select * from user_earnings_monthly;
 
-
-select * from user_gameplay_winning_rate_monthly;
-
-
 select * from user_leaderboard_monthly;
-
 
 SET @cutoff := '2025-09-27 18:30:00';
 INSERT INTO user_leaderboard_monthly (month, user_id,  score)

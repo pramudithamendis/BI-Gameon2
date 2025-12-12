@@ -20,17 +20,20 @@ SELECT
     YEARWEEK(w.created_at, 1) AS year_week,
     MIN(DATE(w.created_at)) AS week_start_date,
     MAX(DATE(w.created_at)) AS week_end_date,
-    w.user as user_id,
-    sum(gcb.amount) as amount
-FROM 
-gaming_app_backend.user_game_session w,
-gaming_app_backend.game_session gs,
-gaming_app_backend.game_coin_bet gcb
-WHERE 
-w.created_at >= @cutoff
-and w.is_game_won = 1
-and w.game_session = gs.id and gs.game_coin_bet = gcb.id
-GROUP BY YEARWEEK(w.created_at, 1),user_id
+    w.user AS user_id,
+    SUM(
+        CASE 
+            WHEN w.is_game_won = 1 THEN gcb.amount
+            ELSE 0
+        END
+    ) AS amount
+FROM gaming_app_backend.user_game_session w
+JOIN gaming_app_backend.game_session gs 
+    ON w.game_session = gs.id
+JOIN gaming_app_backend.game_coin_bet gcb 
+    ON gs.game_coin_bet = gcb.id
+WHERE w.created_at >= @cutoff
+GROUP BY YEARWEEK(w.created_at, 1), user_id
 ORDER BY YEARWEEK(w.created_at, 1) DESC
 ON DUPLICATE KEY UPDATE 
     amount = VALUES(amount),
@@ -38,17 +41,14 @@ ON DUPLICATE KEY UPDATE
     
 select * from user_earnings_weekly;
 
-select * from user_gameplay_winning_rate_weekly;
-
-
 select * from user_leaderboard_weekly;
-
+-- truncate table user_leaderboard_weekly;
 SET @cutoff := '2025-09-27 18:30:00';
 INSERT INTO user_leaderboard_weekly (year_week, user_id,  score) 
 select 
 ued.year_week as year_week, 
 ued.user_id as user_id,
-(ugpwrd.win_rate_percentage * 0.7 + @earningsWeight * 0.2 + ugpwrd.total_games * 0.1) as score
+(ugpwrd.win_rate_percentage * 0.7 + (ued.amount / 1000) * 0.2 + ugpwrd.total_games * 0.1) as score
 from 
 user_earnings_weekly ued,
 user_gameplay_winning_rate_weekly ugpwrd
