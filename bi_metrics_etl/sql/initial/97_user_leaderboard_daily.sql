@@ -45,7 +45,7 @@ select * from user_gameplay_winning_rate_daily;
 select * from user_leaderboard_daily;
 
 SET @cutoff := '2025-09-27 18:30:00';
-INSERT INTO user_leaderboard_daily (date_, user_id, score) 
+INSERT INTO user_leaderboard_daily (date_, user_id, score)
 SELECT 
     DATE(CONVERT_TZ(ugpwrd.date_, '+00:00', '+08:00')) AS date_,
     ugpwrd.user_id,
