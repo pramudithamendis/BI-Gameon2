@@ -11,4 +11,4 @@ GROUP BY DATE(gs.created_at)
 ORDER BY DATE(gs.created_at)
 ON DUPLICATE KEY UPDATE 
     total_sessions = VALUES(total_sessions),
-    updated_at = CURRENT_TIMESTAMP;
+    updated_at = CURRENT_TIMESTAMP; 

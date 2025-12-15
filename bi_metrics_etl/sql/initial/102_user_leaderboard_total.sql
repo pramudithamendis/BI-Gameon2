@@ -2,7 +2,8 @@
 
 -- select * from user;
 -- select distinct(user) from user_game_session;
-drop table temp_user_leaderboard_total;
+-- drop table temp_user_leaderboard_total;
+
 CREATE temporary TABLE temp_user_leaderboard_total (
     user_id BIGINT NOT NULL,
 
@@ -94,20 +95,8 @@ GROUP BY
 select * from temp_user_leaderboard_total;
 
 
-CREATE TABLE user_leaderboard_total (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
 
-    user_id BIGINT NOT NULL,
-
-    score DECIMAL(12,6) NOT NULL,
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
-    UNIQUE KEY uq_user_leaderboard_score (user_id),
-    INDEX idx_score (score)
-);
-
+select * from user_leaderboard_total;
 
 INSERT INTO user_leaderboard_total (user_id, score)
 SELECT 
