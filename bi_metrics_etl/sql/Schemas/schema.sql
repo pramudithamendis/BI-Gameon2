@@ -1276,16 +1276,3 @@ CREATE TABLE user_leaderboard_cumulative (
 );
 
 -- 102
-CREATE TABLE user_leaderboard_total (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-
-    user_id BIGINT NOT NULL,
-
-    score DECIMAL(12,6) NOT NULL,
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-
-    UNIQUE KEY uq_user_leaderboard_score (user_id),
-    INDEX idx_score (score)
-);

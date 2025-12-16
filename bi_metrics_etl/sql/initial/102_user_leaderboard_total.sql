@@ -1,10 +1,6 @@
 -- Current leaderboard
 
--- select * from user;
--- select distinct(user) from user_game_session;
--- drop table temp_user_leaderboard_total;
-
-CREATE temporary TABLE temp_user_leaderboard_total (
+CREATE TABLE game_c_finish_c_won_c_earnings (
     user_id BIGINT NOT NULL,
 
     total_played_games_count INT NOT NULL DEFAULT 0,
@@ -17,16 +13,11 @@ CREATE temporary TABLE temp_user_leaderboard_total (
         ON UPDATE CURRENT_TIMESTAMP,
 
     PRIMARY KEY (user_id)
-
---     CONSTRAINT fk_ugps_user
---         FOREIGN KEY (user_id)
---         REFERENCES user(id)
---         ON DELETE CASCADE
 ) ;
 
 
 SET @isActive = 1;
-INSERT INTO temp_user_leaderboard_total (
+INSERT INTO game_c_finish_c_won_c_earnings (
     user_id,
     total_played_games_count,
     total_finished_count,
@@ -74,10 +65,8 @@ FROM
     gaming_app_backend.user_coin_action_type ucat
 
 WHERE
-    -- base filters
     a.is_active = @isActive
 
-    -- JOIN conditions
     AND a.user = u.id
     AND a.game_session = gs.id
     AND gs.game_session_mode = gsm.id
@@ -85,15 +74,13 @@ WHERE
     AND a.user_coin_action = uca.id
     AND uca.user_coin_action_type = ucat.id
 
-    -- business conditions
     AND gss.code IN ('TERMINATED', 'FINISHED')
     AND gsm.code <> 'AICHALLENGE'
 
 GROUP BY
     u.id;
 
-select * from temp_user_leaderboard_total;
-
+select * from game_c_finish_c_won_c_earnings;
 
 
 select * from user_leaderboard_total;
@@ -107,6 +94,6 @@ SELECT
     )
     + ((a.total_earnings / 1000) * 0.2)
     + (a.total_finished_count * 0.1) AS score
-FROM temp_user_leaderboard_total a;
+FROM game_c_finish_c_won_c_earnings a;
 
 select * from user_leaderboard_total;
