@@ -70,7 +70,7 @@ select * from gaming_app_bi.game_c_finish_c_won_c_earnings;
 
 select * from gaming_app_bi.user_leaderboard_total;
 
-INSERT INTO user_leaderboard_total (user_id, score)
+INSERT INTO gaming_app_bi.user_leaderboard_total (user_id, score)
 SELECT 
     a.user_id,
     (
@@ -78,7 +78,7 @@ SELECT
         + ((a.total_earnings / 1000) * 0.2)
         + (a.total_finished_count * 0.1)
     ) AS score
-FROM game_c_finish_c_won_c_earnings a
+FROM gaming_app_bi.game_c_finish_c_won_c_earnings a
 ON DUPLICATE KEY UPDATE
     score = VALUES(score),
     updated_at = CURRENT_TIMESTAMP;

@@ -17,7 +17,7 @@ CREATE TABLE gaming_app_bi.game_c_finish_c_won_c_earnings (
 );
 
 select * from gaming_app_bi.game_c_finish_c_won_c_earnings;
-truncate table gaming_app_bi.game_c_finish_c_won_c_earnings;
+-- truncate table gaming_app_bi.game_c_finish_c_won_c_earnings;
 SET @isActive = 1;
 INSERT INTO gaming_app_bi.game_c_finish_c_won_c_earnings (
     user_id,
